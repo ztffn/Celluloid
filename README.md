@@ -1,0 +1,2 @@
+# Celluloid
+placeholder theme repository
