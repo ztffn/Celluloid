@@ -1,19 +1,13 @@
-<!-- Banner placeholder; replace Theme/assets/img/banner.png once available -->
-<p align="center">
-  <img src="https://raw.githubusercontent.com/ztffn/Jellyfin-Celluloid-Theme/main/Previews/celluloidT2.png" alt="Celluloid Theme banner" width="100%">
-</p>
+# Celluloid Dreams
 <h1 align="center"> ⚠️ Work in progress. Not ready for use! ⚠️ </h1>
-
-<h1 align="center">Celluloid</h1>
-<p align="center"> A custom theme for <a href="https://jellyfin.org/">Jellyfin</a> — inspired by light leaks, film grain, and the quiet magic of cinema. Designed for rich visuals, clean typography, and a minimal, immersive viewing experience. </p>
-
-
 <p align="center">
-  <a href="#-features">Features</a> ·
-  <a href="#-installation">Installation</a> ·
-  <a href="#-repository-layout">Structure</a> ·
-  <a href="#-development">Development</a>
+  <img src="https://raw.githubusercontent.com/ztffn/Jellyfin-Celluloid-Theme/main/Previews/celluloidD2.png" alt="Celluloid Theme banner" width="100%">
 </p>
+
+
+
+
+***A custom theme for <a href="https://jellyfin.org/">Jellyfin</a> — inspired by light leaks, film grain, and the quiet magic of cinema. Designed for rich visuals, clean typography, and a minimal, immersive viewing experience.***
 
 ---
 
@@ -35,6 +29,12 @@
 > I like celluloid, I like film, I like the way that when a movie is projected it sort of breathes a little in the gate. That's the magic of it to me.
 > 
 > <sub>Gary Oldman</sub>
+---
+
+## 🎥 Preview
+
+https://github.com/user-attachments/assets/bc94e7ad-bd9b-499a-aa51-97ae47d579a0
+
 ---
 
 ## 🧩 Installation
@@ -77,8 +77,6 @@ Jellyfin-Celluloid-Theme/
 └── README.md
 ```
 
-As assets are added you’ll find `webp` previews, color tokens, and optional add-on snippets inside `docs/`.
-
 ---
 
 ## 🛠️ Development
@@ -86,7 +84,7 @@ As assets are added you’ll find `webp` previews, color tokens, and optional ad
 Want to help shape the theme?
 
 1. Clone the repo and create a feature branch.
-2. Work out of `Theme/celluloid.css` (feel free to break auxiliary snippets into `docs/` as needed).
+2. Work out of `Theme/celluloid-nightly.css` (feel free to break auxiliary snippets into `docs/` as needed).
 3. Run your changes locally by pointing Jellyfin to your branch copy via `@import url("https://raw.githubusercontent.com/<username>/Jellyfin-Celluloid-Theme/<branch>/Theme/celluloid.css");`.
 4. Submit a PR with before/after screenshots when possible.
 
@@ -101,6 +99,6 @@ Please keep new CSS tokens documented so we can maintain predictable customizati
 - [ ] Publish preview gallery
 - [ ] Tag v1.0.0 release & announce
 
-Stay tuned—once the CSS lands we’ll tag a pre-release and broaden testing.
+Stay tuned—once the CSS lands I’ll tag a pre-release and broaden testing.
 
 
