@@ -263,7 +263,7 @@ body.withSectionTabs .backdropImage {
     display: block !important;
 }
 .itemName {
-    margin: .5em 0 !important;
+    margin: 0em 0 !important;
 }
 .layout-mobile #itemDetailPage .itemName.infoText.parentNameLast {
     display: block;
@@ -487,19 +487,14 @@ a.overview-expand.emby-button {
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    bottom: 0;   
     z-index: -1;
     transition: all 0.2s ease-out;
 }
 
 /* Make the action sheet less intrusive */
 .dialog.actionSheet {
-    background-color: rgba(var(--gradient-point-1), 0.85) !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
+    background-color: ##20263E;
     border-radius: 16px !important;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5) !important;
     max-width: 400px !important;
@@ -520,6 +515,8 @@ a.overview-expand.emby-button {
     border-radius: 16px !important;
     width: 90% !important;
     max-width: 400px !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
 }
 
 /* Style the action sheet content - more condensed */
