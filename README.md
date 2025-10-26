@@ -54,16 +54,18 @@ Until the packaged release is published, you can preview the theme by referencin
 1. Go to **Dashboard → General → Custom CSS**.
 2. Paste one of the following snippets at the bottom of the box:
 
-   **Stable version:**
+   **Stable build (recommended):**
    ```css
-   @import url("https://raw.githubusercontent.com/ztffn/Jellyfin-Celluloid-Theme/main/Theme/celluloid.css");
+   @import url("https://rawcdn.githack.com/ztffn/Jellyfin-Celluloid-Theme/main/Theme/celluloid.css");
    ```
-   
-   **Latest development version:**
+
+   **Nightly build (latest changes, may break):**
    ```css
-   @import url("https://raw.githubusercontent.com/ztffn/Jellyfin-Celluloid-Theme/main/Theme/celluloid-nightly.css");
+   @import url("https://rawcdn.githack.com/ztffn/Jellyfin-Celluloid-Theme/main/Theme/celluloid-nightly.css");
    ```
-   
+
+   > We use rawcdn.githack.com so the files are served with the correct MIME type. Feel free to self-host or switch to jsDelivr once their cache picks up the repository.
+
 3. Click **Save** and hard-refresh your browser/app (`Ctrl + Shift + R` / `Cmd + Shift + R`).
 
 ### Option 2 — Host Locally
@@ -167,7 +169,7 @@ Want to help shape the theme?
 
 1. Clone the repo and create a feature branch.
 2. Work out of `Theme/celluloid-nightly.css` (feel free to break auxiliary snippets into `docs/` as needed).
-3. Run your changes locally by pointing Jellyfin to your branch copy via `@import url("https://raw.githubusercontent.com/<username>/Jellyfin-Celluloid-Theme/<branch>/Theme/celluloid.css");`.
+3. Run your changes locally by pointing Jellyfin to your branch copy via `@import url("https://rawcdn.githack.com/<username>/Jellyfin-Celluloid-Theme/<branch>/Theme/celluloid.css");`.
 4. Submit a PR with before/after screenshots when possible.
 
 Please keep new CSS tokens documented so we can maintain predictable customizations.
@@ -192,4 +194,3 @@ Celluloid Theme is tested and optimized for:
 If you encounter issues on a specific browser, please report them in the GitHub issues.
 
 ---
-
