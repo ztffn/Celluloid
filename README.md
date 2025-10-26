@@ -29,7 +29,8 @@
 - Beautiful item highlights with a soft backlit glow 
 - Minimal typography and simplified web elements. Posters and movie artwork take center stage
 - Bold play buttons and clear info cues for interactable elements
-- Customizable color scheme and UI elements
+- Multiple built-in color themes (Purple and Blue) with easy switching
+- Highly customizable color scheme and UI elements
 
 
 ---
@@ -75,6 +76,31 @@ Until the packaged release is published, you can preview the theme by referencin
 3. Save and refresh.
 
 > **Tip:** Keep the import as the last line if you stack multiple community themes—Celluloid expects to be loaded after any base adjustments.
+
+### Theme Switching
+
+Celluloid Theme comes with two built-in color themes: **Purple** (default) and **Blue**.
+
+#### Method 1: URL Parameter
+
+Add `?theme=blue` or `?theme=purple` to your Jellyfin URL:
+```
+http://your-jellyfin-server:8096/web/index.html?theme=blue
+```
+
+#### Method 2: Custom CSS
+
+Add one of these lines to your Custom CSS in the Jellyfin Dashboard (after the theme import):
+
+```css
+/* For Blue Theme */
+html { --theme-selection: blue; }
+
+/* For Purple Theme */
+html { --theme-selection: purple; }
+```
+
+For more customization options, see the [customization guide](docs/customization.md).
 
 ---
 

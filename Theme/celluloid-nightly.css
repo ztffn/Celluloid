@@ -7,24 +7,131 @@
    ========================================================================== */
 
 /* ==========================================================================
+   Theme Switching
+   ========================================================================== */
+/* Blue theme - add ?theme=blue to URL or set --theme-selection: blue; in CSS */
+html[data-theme="blue"],
+html[data-theme=""][class*="theme=blue"],
+html:not([data-theme])[class*="theme=blue"] {
+    --primary: var(--blue-deep-blue);
+    --light: var(--blue-white-off);
+    --deep: var(--blue-jade-green);
+    --dark: var(--blue-cherry-red);
+    --highlight: var(--blue-honey-yellow);
+    --accent: var(--blue-accent);
+    --gradient-1: var(--blue-gradient-1);
+    --gradient-2: var(--blue-gradient-2);
+    --menu-bg: var(--blue-menu-bg);
+    --menu-border: var(--blue-menu-border);
+    --gradient-point-1: var(--blue-gradient-point-1);
+    --gradient-point-2: var(--blue-gradient-point-2);
+    --gradient-point-3: var(--blue-gradient-point-3);
+    --background-gradient: var(--blue-background-gradient);
+    --darker-gradient-point: var(--blue-darker-gradient-point);
+}
+
+/* Purple theme - add ?theme=purple to URL or set --theme-selection: purple; in CSS */
+html[data-theme="purple"],
+html[data-theme=""][class*="theme=purple"],
+html:not([data-theme])[class*="theme=purple"],
+html:not([class*="theme="]) {
+    --primary: var(--purple-primary);
+    --light: var(--purple-light);
+    --deep: var(--purple-deep);
+    --dark: var(--purple-dark);
+    --highlight: var(--purple-highlight);
+    --accent: var(--purple-accent);
+    --gradient-1: var(--purple-gradient-1);
+    --gradient-2: var(--purple-gradient-2);
+    --menu-bg: var(--purple-menu-bg);
+    --menu-border: var(--purple-menu-border);
+    --gradient-point-1: var(--purple-gradient-point-1);
+    --gradient-point-2: var(--purple-gradient-point-2);
+    --gradient-point-3: var(--purple-gradient-point-3);
+    --background-gradient: var(--purple-background-gradient);
+    --darker-gradient-point: var(--purple-darker-gradient-point);
+}
+
+/* Theme detection from URL parameter */
+@media screen {
+    html:not([data-theme]) {
+        --theme-detection: var(--theme-selection, purple);
+    }
+}
+
+/* ==========================================================================
    Imports and Font Settings
    ========================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 /* ==========================================================================
    Variables - Customization Options
    ========================================================================== */
 :root {
-    /* Colors - RGB values for use in rgba() */
-    --white: 243, 242, 243;           /* F3F2F3 - Used for text and highlights */
-    --white-off: 207, 221, 233;       /* CFDDE9 - Used for secondary text */
-    --jade-green: 0, 172, 111;        /* 00AC6F - Used for success indicators */
-    --honey-yellow: 255, 194, 85;     /* FFC255 - Used for stars and warnings */
-    --cherry-red: 212, 51, 83;        /* D43353 - Used for error states */
-    --deep-blue: 78, 116, 247;        /* 4E74F7 - Used for links and focus states */
+    /* Theme Selection - Default is "purple" */
+    /* To change theme, add ?theme=blue to the URL or set in Custom CSS: html { --theme-selection: blue; } */
+    --theme-selection: purple;
     
-    /* Theme specific variables */
-    --accent: var(--deep-blue);       /* Main accent color - change this to customize theme accent */
+    /* Blue Theme Colors */
+    --blue-white: 243, 242, 243;           /* F3F2F3 - Used for text and highlights */
+    --blue-white-off: 207, 221, 233;       /* CFDDE9 - Used for secondary text */
+    --blue-jade-green: 0, 172, 111;        /* 00AC6F - Used for success indicators */
+    --blue-honey-yellow: 255, 194, 85;     /* FFC255 - Used for stars and warnings */
+    --blue-cherry-red: 212, 51, 83;        /* D43353 - Used for error states */
+    --blue-deep-blue: 78, 116, 247;        /* 4E74F7 - Used for links and focus states */
+    --blue-accent: var(--blue-deep-blue);   /* Main blue theme accent color */
+    --blue-gradient-1: #0f7195;
+    --blue-gradient-2: #118a6e;
+    --blue-menu-bg: rgba(0, 164, 220, 0.2);
+    --blue-menu-border: #00a4dc;
+    --blue-gradient-point-1: rgb(15, 113, 149); /* #0f7195 - First gradient point */
+    --blue-gradient-point-2: rgb(17, 138, 110); /* #118a6e - Second gradient point */
+    --blue-gradient-point-3: rgb(0, 84, 147);   /* #005493 - Third gradient point */
+    --blue-background-gradient: linear-gradient(300deg, var(--blue-gradient-point-1) 0%, 26.776%, var(--blue-gradient-point-2) 53.5519%, 76.776%, var(--blue-gradient-point-3) 100%);
+    --blue-darker-gradient-point: rgb(15, 113, 149); /* Darkest color for solid backgrounds */
+    
+    /* Purple Theme Colors */
+    --purple-primary: 140, 85, 217;         /* #8C55D9 - Primary accent color */
+    --purple-light: 193, 179, 242;          /* #C1B3F2 - Light accent color */
+    --purple-deep: 56, 47, 115;             /* #382F73 - Deep accent color */
+    --purple-dark: 34, 41, 64;              /* #222940 - Dark background color */
+    --purple-highlight: 98, 149, 217;       /* #6295D9 - Highlight color */
+    --purple-accent: var(--purple-primary);  /* Main purple theme accent color */
+    --purple-gradient-1: #8C55D9;
+    --purple-gradient-2: #382F73;
+    --purple-menu-bg: rgba(140, 85, 217, 0.2);
+    --purple-menu-border: #8C55D9;
+    --purple-gradient-point-1: rgb(32, 38, 62);  /* #20263E - First gradient point */
+    --purple-gradient-point-2: rgb(52, 43, 108); /* #342B6C - Second gradient point */
+    --purple-gradient-point-3: rgb(86, 55, 136); /* #563788 - Third gradient point */
+    --purple-background-gradient: linear-gradient(300deg, var(--purple-gradient-point-1) 0%, 26.776%, var(--purple-gradient-point-2) 53.5519%, 76.776%, var(--purple-gradient-point-3) 100%);
+    --purple-darker-gradient-point: rgb(32, 38, 62); /* Darkest color for solid backgrounds */
+    
+    /* Dynamic theme variables - These change based on theme selection */
+    --primary: var(--purple-primary);
+    --light: var(--purple-light);
+    --deep: var(--purple-deep);
+    --dark: var(--purple-dark);
+    --highlight: var(--purple-highlight);
+    --accent: var(--purple-accent);
+    --gradient-1: var(--purple-gradient-1);
+    --gradient-2: var(--purple-gradient-2);
+    --menu-bg: var(--purple-menu-bg);
+    --menu-border: var(--purple-menu-border);
+    --gradient-point-1: var(--purple-gradient-point-1);
+    --gradient-point-2: var(--purple-gradient-point-2);
+    --gradient-point-3: var(--purple-gradient-point-3);
+    --background-gradient: var(--purple-background-gradient);
+    --darker-gradient-point: var(--purple-darker-gradient-point);
+    
+    /* Legacy color variables for backward compatibility */
+    --white: var(--blue-white);
+    --white-off: var(--blue-white-off);
+    --jade-green: var(--blue-jade-green);
+    --honey-yellow: var(--blue-honey-yellow);
+    --cherry-red: var(--blue-cherry-red);
+    --deep-blue: var(--blue-deep-blue);
     
     /* Uncomment the following lines to enable custom rounding throughout the UI */
     /*
@@ -67,6 +174,8 @@ body, h1, h2, h3, h4 {
     position: fixed;
     width: 80vw;
     left: 20%;
+    background-color: var(--darker-gradient-point);
+    background: var(--background-gradient);
 }
 
 .backdropImage {
@@ -208,7 +317,7 @@ body.withSectionTabs .backdropImage {
     margin-bottom: 0.3vh;
 }
 #itemDetailPage .tagline {
-    border-left: 0.25em solid rgb(var(--white));
+    border-left: 0.25em solid rgb(var(--primary));
     padding: 0 0.5em;
 }
 .detailSectionContent .detail-clamp-text,
@@ -341,11 +450,12 @@ a.overview-expand.emby-button {
 .btnShuffle,
 .btnReplay,
 .itemExternalLinks,
-.itemTags {
-    display: none;
+.itemTags,
+.sidebarHeader {
+    display: none !important;
 }
 .starIcon {
-    color: rgba(var(--honey-yellow), 0.8);
+    color: rgba(var(--highlight), 0.8);
 }
 /* Make watched icon dark and transparent */
 .indicator { background: #00000058 !important; }
@@ -364,6 +474,165 @@ a.overview-expand.emby-button {
 .dialog .nowPlayingContextMenu, html {
     background-color: #1010100f;
     backdrop-filter: blur(10px);
+}
+
+/* ==========================================================================
+   Action Sheet Styling - Minimal Approach
+   ========================================================================== */
+
+/* Create a backdrop overlay effect with enhanced blur */
+.dialog.actionSheet.opened::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    z-index: -1;
+    transition: all 0.2s ease-out;
+}
+
+/* Make the action sheet less intrusive */
+.dialog.actionSheet {
+    background-color: rgba(var(--gradient-point-1), 0.85) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5) !important;
+    max-width: 400px !important;
+    margin: auto !important;
+    height: auto !important;
+    max-height: 90vh !important;
+    top: 5vh !important;
+    bottom: 5vh !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: none !important;
+    /* Animation removed as it breaks functionality */
+}
+
+/* Remove fullscreen styling */
+.dialog-fullscreen.actionsheet-fullscreen {
+    position: fixed !important;
+    border-radius: 16px !important;
+    width: 90% !important;
+    max-width: 400px !important;
+}
+
+/* Style the action sheet content - more condensed */
+.actionSheetContent {
+    padding: 0.5rem !important;
+}
+
+/* Style the action sheet scroller - more condensed */
+.actionSheetScroller {
+    padding: 0.25rem !important;
+    max-height: 80vh !important;
+    overflow-y: auto !important;
+}
+
+.actionSheetScroller::-webkit-scrollbar {
+    width: 5px !important;
+}
+
+.actionSheetScroller::-webkit-scrollbar-thumb {
+    background: rgba(var(--primary), 0.5) !important;
+    border-radius: 10px !important;
+}
+
+.actionSheetScroller::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1) !important;
+    border-radius: 10px !important;
+}
+
+/* Style the action sheet items - more compact */
+.actionSheetMenuItem {
+    border-radius: 6px !important;
+    margin-bottom: 0.25rem !important;
+    transition: all 0.2s ease-out !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    padding: 0.4em 0.6em !important;
+}
+
+.actionSheetMenuItem:hover,
+.actionSheetMenuItem:focus {
+    background-color: rgba(var(--primary), 0.2) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Style the action sheet menu item icons - more compact */
+.actionsheetMenuItemIcon {
+    color: rgba(var(--primary), 0.9) !important;
+    font-size: 1.2em !important;
+    margin-right: 0.5em !important;
+}
+
+/* Style the action sheet item text - more compact */
+.actionSheetItemText {
+    font-family: 'Quicksand', sans-serif !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.02em !important;
+    font-size: 0.9em !important;
+}
+
+/* Style the action sheet divider - more compact */
+.actionsheetDivider {
+    margin: 0.3rem 0 !important;
+    height: 1px !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Style the close button - fixed dimensions */
+.btnCloseActionSheet {
+    position: absolute !important;
+    top: 0.5rem !important;
+    right: 0.5rem !important;
+    z-index: 1 !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    border-radius: 50% !important;
+    padding: 0.5rem !important;
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: unset !important;
+    max-width: unset !important;
+}
+
+/* Fix close button icon */
+.btnCloseActionSheet .material-icons {
+    font-size: 1.5rem !important;
+    line-height: 1 !important;
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+}
+
+/* Animation removed as it breaks functionality */
+
+/* Responsive styles for action sheet */
+@media (max-width: 640px) {
+    .dialog.actionSheet {
+        width: 95% !important;
+        max-width: none !important;
+        border-radius: 12px !important;
+    }
+}
+
+/* TV layout adjustments */
+.layout-tv .dialog.actionSheet {
+    max-width: 500px !important;
+    border-radius: 8px !important;
+}
+
+.layout-tv .actionSheetMenuItem {
+    padding: 0.5rem 0.75rem !important;
+    margin-bottom: 0.4rem !important;
 }
 
 .headerButton.headerButtonRight.headerUserButton.paper-icon-button-light {
@@ -452,8 +721,8 @@ body:not(.hide-scroll).homePage .mainDrawer-scrollContainer {
 .lnkMediaFolder.navMenuOption-selected,
 .libraryPage:not(.allLibraryPage) .lnkMediaFolder[data-collectiontype="boxsets"],
 .libraryPage:not(.allLibraryPage) .navMenuOption[href*="collectionType=boxsets"] {
-    background-color: rgba(0, 164, 220, 0.2) !important;
-    border-left: 3px solid #00a4dc !important;
+    background-color: var(--menu-bg) !important;
+    border-left: 3px solid var(--menu-border) !important;
 }
 /* Keep icons white in all states */
 .navMenuOption i,
@@ -503,18 +772,10 @@ body:not(.hide-scroll).homePage .mainDrawer-scrollContainer {
 .navMenuOption-selected,
 .navMenuOption.navMenuOption-selected,
 .lnkMediaFolder.navMenuOption-selected {
-    background-color: rgba(0, 164, 220, 0.2) !important;
-    border-left: 3px solid #00a4dc !important;
+    background-color: var(--menu-bg) !important;
+    border-left: 3px solid var(--menu-border) !important;
 }
-/* Menu icons */
-.navMenuOption i,
-.navMenuOption .material-icons,
-.navMenuOption .navMenuOptionIcon,
-.lnkMediaFolder i,
-.lnkMediaFolder .material-icons,
-.lnkMediaFolder .navMenuOptionIcon {
-    color: #fff !important;
-}
+/* Menu icons - removed duplicate */
 /* Menu scrollbar */
 .mainDrawer-scrollContainer {
     pointer-events: auto !important;
@@ -609,7 +870,7 @@ body:not(.hide-scroll).homePage .mainDrawer-scrollContainer {
 /* Create toggle button using pseudo-element */
 .adminMenuOptions::before {
     content: "\e8b8" !important;
-    font-family: 'Material Icons';
+    font-family: 'Material Icons', sans-serif;
     position: absolute;
     left: 0;
     top: -2em; /* Move up to create space */
@@ -628,24 +889,38 @@ body:not(.hide-scroll).homePage .mainDrawer-scrollContainer {
     box-sizing: border-box !important;
     color: #fff;
     font-size: 1.5em;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* Add hover/focus effect to match other menu items */
 .adminMenuOptions:hover::before,
 .adminMenuOptions:focus-within::before,
 .adminMenuOptions.show-focus:focus::before {
-    background-color: rgba(0, 164, 220, 0.2) !important;
-    border-left: 3px solid #00a4dc !important;
+    background-color: var(--menu-bg) !important;
+    border-left: 3px solid var(--menu-border) !important;
 }
 
 /* Hide menu items by default */
 .adminMenuOptions > .navMenuOption,
-.userMenuOptions > .navMenuOption,
-.userMenuOptions > .sidebarHeader {
+.userMenuOptions > .navMenuOption {
     opacity: 0;
     max-height: 0;
     overflow: hidden;
     transition: opacity 0.2s ease-out, max-height 0.2s ease-out;
+}
+
+/* Always hide sidebar headers */
+.userMenuOptions > .sidebarHeader,
+.adminMenuOptions > .sidebarHeader {
+    display: none !important;
 }
 
 /* Show both sections when hovering or focusing over admin section */
@@ -655,9 +930,7 @@ body:not(.hide-scroll).homePage .mainDrawer-scrollContainer {
 .adminMenuOptions:hover ~ .userMenuOptions > .navMenuOption,
 .adminMenuOptions:focus-within ~ .userMenuOptions > .navMenuOption,
 .adminMenuOptions.show-focus:focus ~ .userMenuOptions > .navMenuOption,
-.adminMenuOptions:hover ~ .userMenuOptions > .sidebarHeader,
-.adminMenuOptions:focus-within ~ .userMenuOptions > .sidebarHeader,
-.adminMenuOptions.show-focus:focus ~ .userMenuOptions > .sidebarHeader,
+/* Removed sidebar header hover rules */
 /* Show when any admin menu item is selected */
 .adminMenuOptions > .navMenuOption:hover ~ .navMenuOption,
 .adminMenuOptions > .navMenuOption:focus-within ~ .navMenuOption,
@@ -666,9 +939,10 @@ body:not(.hide-scroll).homePage .mainDrawer-scrollContainer {
 .userMenuOptions > .navMenuOption:hover ~ .navMenuOption,
 .userMenuOptions > .navMenuOption:focus-within ~ .navMenuOption,
 .userMenuOptions > .navMenuOption.show-focus:focus ~ .navMenuOption,
-.userMenuOptions > .navMenuOption:hover ~ .sidebarHeader,
-.userMenuOptions > .navMenuOption:focus-within ~ .sidebarHeader,
-.userMenuOptions > .navMenuOption.show-focus:focus ~ .sidebarHeader {
+/* Removed more sidebar header hover rules */
+.userMenuOptions > .navMenuOption:hover ~ .navMenuOption,
+.userMenuOptions > .navMenuOption:focus-within ~ .navMenuOption,
+.userMenuOptions > .navMenuOption.show-focus:focus ~ .navMenuOption {
     opacity: 1;
     max-height: 3em;
 }
@@ -680,9 +954,7 @@ body:not(.hide-scroll).homePage .mainDrawer-scrollContainer {
 .mainDrawer-scrollContainer:has(.userMenuOptions:hover) .userMenuOptions > .navMenuOption,
 .mainDrawer-scrollContainer:has(.userMenuOptions:focus-within) .userMenuOptions > .navMenuOption,
 .mainDrawer-scrollContainer:has(.userMenuOptions.show-focus:focus) .userMenuOptions > .navMenuOption,
-.mainDrawer-scrollContainer:has(.userMenuOptions:hover) .userMenuOptions > .sidebarHeader,
-.mainDrawer-scrollContainer:has(.userMenuOptions:focus-within) .userMenuOptions > .sidebarHeader,
-.mainDrawer-scrollContainer:has(.userMenuOptions.show-focus:focus) .userMenuOptions > .sidebarHeader,
+/* Removed final sidebar header hover rules */
 /* Show when any menu item in either section is selected */
 .mainDrawer-scrollContainer:has(.adminMenuOptions .navMenuOption:hover) .adminMenuOptions > .navMenuOption,
 .mainDrawer-scrollContainer:has(.adminMenuOptions .navMenuOption:focus-within) .adminMenuOptions > .navMenuOption,
@@ -697,6 +969,8 @@ body:not(.hide-scroll).homePage .mainDrawer-scrollContainer {
 /* Keep the toggle button visible */
 .adminMenuOptions::before {
     opacity: 1 !important;
+    display: flex !important;
+    text-rendering: auto;
 }
 
 /* ==========================================================================
@@ -738,7 +1012,7 @@ body:not(.hide-scroll).homePage .mainDrawer-scrollContainer {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(-45deg, #d15631, #b9225c, #0f7195, #118a6e);
+    background: linear-gradient(-45deg, var(--gradient-1), var(--gradient-2), var(--dark, #222940), var(--highlight, #6295D9));
     background-size: 400% 400%;
     animation: gradient-anim 15s ease infinite;
     opacity: 0;
@@ -928,10 +1202,10 @@ body.withSectionTabs .lightLeak-blob3 {
 
 
 .emby-button.show-focus:focus {
-    background: linear-gradient(-45deg, #0f7195, #118a6e);
+    background: linear-gradient(-45deg, var(--gradient-1), var(--gradient-2));
     text-shadow: 0 0 30px #fff;
     color: rgba(255, 255, 255, 1);
-    box-shadow: 0 5px 15px rgba(42, 182, 247, 0.4);
+    box-shadow: 0 5px 15px rgba(var(--primary), 0.4);
     transform: scale(1.05);
     transition: all 0.2s ease-out;
 }
@@ -941,10 +1215,10 @@ body.withSectionTabs .lightLeak-blob3 {
 }
 
 .detailButton.emby-button.show-focus:hover {
-    background: linear-gradient(-45deg, #0f7195, #118a6e);
+    background: linear-gradient(-45deg, var(--gradient-1), var(--gradient-2));
     text-shadow: 0 0 30px #fff;
     color: rgba(255, 255, 255, 1);
-    box-shadow: 0 5px 15px rgba(42, 182, 247, 0.4);
+    box-shadow: 0 5px 15px rgba(var(--primary), 0.4);
     transform: scale(1.05);
     transition: all 0.2s ease-out;
 }
@@ -1051,3 +1325,8 @@ h1:has-text("Playlists") {
 #itemDetailPage .detailPagePrimaryContainer .detailSectionContent {
     padding-left: 0vw !important;
 }
+
+.gradientbg {
+	background: var(--background-gradient);
+}
+    

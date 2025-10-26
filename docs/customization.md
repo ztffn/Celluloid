@@ -2,6 +2,29 @@
 
 This guide provides detailed instructions for customizing the Celluloid Theme for Jellyfin.
 
+## Theme Selection
+
+Celluloid Theme comes with two built-in color themes: **Purple** (default) and **Blue**. You can switch between them in several ways:
+
+### Method 1: URL Parameter
+
+Add `?theme=blue` or `?theme=purple` to your Jellyfin URL:
+```
+http://your-jellyfin-server:8096/web/index.html?theme=blue
+```
+
+### Method 2: Custom CSS
+
+Add one of these lines to your Custom CSS in the Jellyfin Dashboard (after the theme import):
+
+```css
+/* For Blue Theme */
+html { --theme-selection: blue; }
+
+/* For Purple Theme */
+html { --theme-selection: purple; }
+```
+
 ## Color Scheme
 
 The theme uses RGB color values for maximum flexibility with opacity. You can modify these colors by adding custom CSS after importing the theme.
