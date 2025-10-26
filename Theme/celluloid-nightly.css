@@ -1,25 +1,37 @@
 /* ==========================================================================
+   Celluloid Theme for Jellyfin
+   Author: Original creator
+   Version: 1.0.0
+   License: MIT
+   GitHub: https://github.com/ztffn/Jellyfin-Celluloid-Theme
+   ========================================================================== */
+
+/* ==========================================================================
    Imports and Font Settings
    ========================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 /* ==========================================================================
-   Variables
+   Variables - Customization Options
    ========================================================================== */
 :root {
-    /* Colors */
-    --white: 243, 242, 243;           /* F3F2F3 */
-    --white-off: 207, 221, 233;       /* CFDDE9 */
-    --jade-green: 0, 172, 111;        /* 00AC6F */
-    --honey-yellow: 255, 194, 85;     /* FFC255 */
-    --cherry-red: 212, 51, 83;        /* D43353 */
-    --deep-blue: 78, 116, 247;        /* 4E74F7 */
-
-    /* Uncomment to enable custom rounding
-    --rounding: 12px;
-    --rounding-alt: 9px;
-    --rounding-large: 24px;
-    --rounding-circle: 100px;
+    /* Colors - RGB values for use in rgba() */
+    --white: 243, 242, 243;           /* F3F2F3 - Used for text and highlights */
+    --white-off: 207, 221, 233;       /* CFDDE9 - Used for secondary text */
+    --jade-green: 0, 172, 111;        /* 00AC6F - Used for success indicators */
+    --honey-yellow: 255, 194, 85;     /* FFC255 - Used for stars and warnings */
+    --cherry-red: 212, 51, 83;        /* D43353 - Used for error states */
+    --deep-blue: 78, 116, 247;        /* 4E74F7 - Used for links and focus states */
+    
+    /* Theme specific variables */
+    --accent: var(--deep-blue);       /* Main accent color - change this to customize theme accent */
+    
+    /* Uncomment the following lines to enable custom rounding throughout the UI */
+    /*
+    --rounding: 12px;                 /* Default rounding for most elements */
+    --rounding-alt: 9px;              /* Alternative rounding for smaller elements */
+    --rounding-large: 24px;           /* Larger rounding for prominent elements */
+    --rounding-circle: 100px;         /* Full circle rounding for avatar elements */
     */
 }
 
@@ -29,7 +41,6 @@
 body, h1, h2, h3, h4 {
     font-family: 'Quicksand', sans-serif;
     font-size: 120% !important;
-   
 }
 
 .sectionTabs {
@@ -43,13 +54,10 @@ body, h1, h2, h3, h4 {
 .skinHeader-withBackground {
     background-color: transparent;
 }
-/* No Counter on Library Page */
-.libraryPage .paging {
-  
-}
+
 /* Sort image replace */
 .material-icons.sort_by_alpha::before {
-  content: "\e8d5" !important;
+    content: "\e8d5" !important;
 }
 /* ==========================================================================
    Backdrop and Background
@@ -94,16 +102,14 @@ body.withSectionTabs .backdropImage {
 /* ==========================================================================
    Detail Page Layout
    ========================================================================== */
-#itemDetailPage {
-    .detailPagePrimaryContainer,
-    .detailLogo,
-    .detailPagePrimaryContainer .detailSectionContent {
-        padding-left: 3.5vw !important;
-    }
+#itemDetailPage .detailPagePrimaryContainer,
+#itemDetailPage .detailLogo,
+#itemDetailPage .detailPagePrimaryContainer .detailSectionContent {
+    padding-left: 3.5vw !important;
+}
 
-    .detailSectionContent {
-        padding-right: 35vw !important;
-    }
+#itemDetailPage .detailSectionContent {
+    padding-right: 35vw !important;
 }
 
 /* Logo positioning */
@@ -111,15 +117,13 @@ body.withSectionTabs .backdropImage {
     height: 16vh;
     width: 34em;
     background-position: top left;
+    display: none;
 }
 
 /*Alternate itempage*/
 .itemBackdrop {
     height: 31vh !important;
     display: inherit;
-}
-.detailLogo {
-    display: none;
 }
 .detailRibbon {
     margin-top: 0;
@@ -237,20 +241,8 @@ a.overview-expand.emby-button {
 .detailImageContainer.padded-left .card.portraitCard {
     margin-left: auto; /* Pushes it to the right */
 }
-#itemDetailPage .detailPagePrimaryContainer{
-    padding-left: 3.5vw!important   ;
-}
-#itemDetailPage .detailLogo{
-    padding-left: 3.5vw!important;
-}
-#itemDetailPage .detailPagePrimaryContainer .detailSectionContent{
-    padding-left: 3.5vw!important;
-}
-.detailPageContent{
-    padding-left: 3.5vw!important;
-}
-#itemDetailPage .detailSectionContent{
-    padding-right: 35vw !important;
+.detailPageContent {
+    padding-left: 3.5vw !important;
 }
 /* ==========================================================================
    Card and Hover Effects
@@ -362,38 +354,48 @@ a.overview-expand.emby-button {
 .headerHomeButton {
     display: none;
 }
-.headerButton.headerButtonRight.headerUserButton.paper-icon-button-light {
-    display: none;
-}
 
 /* Fade Horizontal Scrollers */
 .emby-scroller {
     padding-right: max(env(safe-area-inset-right),3.3%);
     mask-image: linear-gradient( 90deg, transparent, #000 5%, #000 85%, transparent 100% );
 }
+
 .dialog .nowPlayingContextMenu, html {
     background-color: #1010100f;
     backdrop-filter: blur(10px);
 }
 
 .headerButton.headerButtonRight.headerUserButton.paper-icon-button-light {
-    display:inline-block!important;
-}
-.headerButton.headerButtonRight.headerUserButton.paper-icon-button-light {
-    display:inline-block!important;
+    display: inline-block !important;
 }
 
-/*Library Page - Align Posters to Center */
-.padded-right-withalphapicker {padding-right:2.5% !important;}
-/*Library Page - remove vertical alpha Picker*/
-div.alphaPickerRow-vertical {display: none !important;}
-/*Library (Folders) - Remove Shuffle and play all buttons*/
-.btnShuffle.button-flat {display: none;}
-/*Item Page - resize Subtitle bar*/
-.trackSelections {max-width: 22em;}
-/* Shrink and square (or round) cast thumnails */
-#castContent .card.overflowPortraitCard.personCard.card-hoverable.card-withuserdata {width: 3.5cm !important; font-size: 70% !important;}
-#castContent .card.overflowPortraitCard.personCard.card-withuserdata {width: 3.5cm !important; font-size: 70% !important;}
+/* Library Page - Align Posters to Center */
+.padded-right-withalphapicker {
+    padding-right: 2.5% !important;
+}
+
+/* Library Page - remove vertical alpha Picker */
+div.alphaPickerRow-vertical {
+    display: none !important;
+}
+
+/* Library (Folders) - Remove Shuffle and play all buttons */
+.btnShuffle.button-flat {
+    display: none;
+}
+
+/* Item Page - resize Subtitle bar */
+.trackSelections {
+    max-width: 22em;
+}
+
+/* Shrink and square (or round) cast thumbnails */
+#castContent .card.overflowPortraitCard.personCard.card-hoverable.card-withuserdata,
+#castContent .card.overflowPortraitCard.personCard.card-withuserdata {
+    width: 3.5cm !important;
+    font-size: 70% !important;
+}
 
 /* ==========================================================================
    Vertical Menu
@@ -560,33 +562,14 @@ body:not(.hide-scroll).homePage .mainDrawer-scrollContainer {
 .layout-desktop .touch-menu-la.transition {
     transition: transform 0.24s ease-out, left 0.26s ease-out, -webkit-transform 0.24s ease-out !important;
 }
-/* Scrollbar adjustments for drawer */
-.mainDrawer-scrollContainer::-webkit-scrollbar {
-    width: 4px;
-}
-.mainDrawer-scrollContainer::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 2px;
-}
-.mainDrawer-scrollContainer::-webkit-scrollbar-track {
-    background: transparent;
-}
+/* Scrollbar adjustments already defined above */
 .mainDrawer .navMenuOption.emby-button.show-focus:focus,
 .mainDrawer .navMenuOption.show-focus:focus {
     transform: none !important;
     -webkit-transform: none !important;
     z-index: 999 !important;
 }
-/* Hidden elements */
-.sidebarHeader,
-.btnShuffle,
-.btnReplay,
-.itemExternalLinks,
-.itemTags,
-.headerHomeButton,
-div.alphaPickerRow-vertical {
-    display: none;
-}
+/* Hidden elements already defined above */
 
 /* ==========================================================================
    Vertical Menu
@@ -717,95 +700,9 @@ div.alphaPickerRow-vertical {
 }
 
 /* ==========================================================================
-   Filter Controls in Vertical Menu | TODO: could not get it to position below movies but above shows based on what page were on
-   ========================================================================== 
-
-/* Reset margin for movies link 
-.lnkMediaFolder[data-itemid][href*="movies.html"] {
-    margin-bottom: 0 !important;
-}
-
-/* Add margin only when the controls container exists and is visible 
-.pageTabContent:has(.flex.align-items-center.justify-content-center.flex-wrap-wrap) .lnkMediaFolder[data-itemid][href*="movies.html"] {
-    margin-bottom: 11em !important;
-}
-
-/* Position the control container in vertical menu 
-.flex.align-items-center.justify-content-center.flex-wrap-wrap {
-    position: fixed !important;
-    left: 0 !important;
-    top: 300px !important;
-    width: 60px !important;
-    height: auto !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    justify-content: flex-start !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    background: transparent !important;
-    z-index: 999 !important;
-    transition: width 0.3s ease-out !important;
-}
-
-/* Expand controls with menu 
-.mainDrawer.focused ~ .libraryPage .flex.align-items-center.justify-content-center.flex-wrap-wrap,
-.mainDrawer:hover ~ .libraryPage .flex.align-items-center.justify-content-center.flex-wrap-wrap {
-    width: 240px !important;
-}
-
-/* Style individual controls 
-.btnSelectView,
-.btnSort,
-.btnFilter,
-.btnFilter-wrapper {
-    width: 100% !important;
-    height: 3em !important;
-    margin: 0.1em 0 !important;
-    background: transparent !important;
-    border: none !important;
-    border-left: 3px solid transparent !important;
-    color: rgba(255, 255, 255, 0.7) !important;
-    text-align: left !important;
-    cursor: pointer !important;
-    border-top-right-radius: 12px !important;
-    border-bottom-right-radius: 12px !important;
-}
-
-/* Style the icons 
-.btnSelectView .material-icons,
-.btnSort .material-icons,
-.btnFilter .material-icons {
-    margin-right: 1em !important;
-    font-size: 1.5em !important;
-    vertical-align: middle !important;
-    color: #fff !important;
-    width: 24px !important;
-    text-align: center !important;
-}
-
-/* Hover effects 
-.btnSelectView:hover,
-.btnSort:hover,
-.btnFilter-wrapper:hover {
-    background-color: rgba(0, 164, 220, 0.2) !important;
-    border-left: 3px solid #00a4dc !important;
-}
-
-/* Filter indicator 
-.filterIndicator {
-    position: absolute !important;
-    right: 1em !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    background: #00a4dc !important;
-    color: white !important;
-    border-radius: 50% !important;
-    width: 1.2em !important;
-    height: 1.2em !important;
-    text-align: center !important;
-    line-height: 1.2em !important;
-    font-size: 0.8em !important;
-}
+   Filter Controls in Vertical Menu
+   ========================================================================== */
+/* This section is currently disabled as it needs more work */
 
 /* Hide paging info and shuffle */
 .listPaging,
@@ -818,23 +715,16 @@ div.alphaPickerRow-vertical {
   content: "\e8d5" !important;
 }
 
-/* Show/hide button text based on menu state */
-.btnSelectView::after,
-.btnSort::after,
-.btnFilter::after {
-display: none !important;
-}
-
 /* Move Filter menu up a bit */
 .libraryPage {
     padding-bottom: 5em !important;
-  margin-top: -3em !important;
-
+    margin-top: -3em !important;
 }
+
 /* But then move down the content on main page */
 .homeSectionsContainer {
     margin-top: 3em !important;
-  }
+}
 
 /* ==========================================================================
    Backdrop Transitions
@@ -856,7 +746,7 @@ display: none !important;
     transition: opacity 0.8s ease-out;
 }
 
-/* Show  overlay when on main page */
+/* Show overlay when on main page */
 body.withSectionTabs .backdropImage::before {
     opacity: 1;
 }
@@ -870,8 +760,9 @@ body:not(.withSectionTabs) .backdropImage::before {
 .backdropImageFadeIn {
     transition: opacity 0.8s ease-out;
 }
+
 /* Add film grain effect */
-.backdropImage::after {
+.backdropImage .filmGrain {
     content: '';
     position: absolute;
     top: 0;
@@ -910,9 +801,8 @@ body:not(.withSectionTabs) .backdropImage::after {
    Light Leak Effects
    ========================================================================== */
 
-
 /* First blob */
-.backdropImage::after {
+.lightLeak-blob1 {
     content: '';
     position: fixed !important;
     height: 350px !important;
@@ -939,7 +829,7 @@ body:not(.withSectionTabs) .backdropImage::after {
 }
 
 /* Additional blobs using other elements */
-.libraryPage::before {
+.lightLeak-blob2 {
     content: '';
     position: fixed !important;
     height: 200px !important;
@@ -965,7 +855,7 @@ body:not(.withSectionTabs) .backdropImage::after {
     -webkit-perspective: 1000 !important;
 }
 
-.libraryPage::after {
+.lightLeak-blob3 {
     content: '';
     position: fixed !important;
     height: 180px !important;
@@ -992,9 +882,9 @@ body:not(.withSectionTabs) .backdropImage::after {
 }
 
 /* Show blobs when on main page */
-body.withSectionTabs .backdropImage::after,
-body.withSectionTabs .mainDrawer::before,
-body.withSectionTabs .mainDrawer::after {
+body.withSectionTabs .lightLeak-blob1,
+body.withSectionTabs .lightLeak-blob2,
+body.withSectionTabs .lightLeak-blob3 {
     opacity: 0.5 !important;
 }
 
@@ -1037,36 +927,29 @@ body.withSectionTabs .mainDrawer::after {
    ========================================================================== */
 
 
-   .emby-button.show-focus:focus{
+.emby-button.show-focus:focus {
     background: linear-gradient(-45deg, #0f7195, #118a6e);
-  text-shadow: 0 0 30px #fff;
+    text-shadow: 0 0 30px #fff;
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 0 5px 15px rgba(42, 182, 247, 0.4);
+    transform: scale(1.05);
+    transition: all 0.2s ease-out;
 }
-.emby-button.show-focus:focus{
-    background: linear-gradient(-45deg, #0f7195, #118a6e);
-  text-shadow: 0 0 30px #fff;
-  color: rgba(255, 255, 255, 1);
-box-shadow: 0 5px 15px rgba(42, 182, 247, 0.4);
-         transform: scale(1.05);
-  transition: all 0.2s ease-out;
-}
+
 .detailButton:active {
     transform: scale(0.95);  
 }
 
+.detailButton.emby-button.show-focus:hover {
+    background: linear-gradient(-45deg, #0f7195, #118a6e);
+    text-shadow: 0 0 30px #fff;
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 0 5px 15px rgba(42, 182, 247, 0.4);
+    transform: scale(1.05);
+    transition: all 0.2s ease-out;
+}
 
-.detailButton.emby-button.show-focus:hover{
-    background: linear-gradient(-45deg, #0f7195, #118a6e);
-  text-shadow: 0 0 30px #fff;
-}
-.detailButton.emby-button.show-focus:hover{
-    background: linear-gradient(-45deg, #0f7195, #118a6e);
-  text-shadow: 0 0 30px #fff;
-  color: rgba(255, 255, 255, 1);
-box-shadow: 0 5px 15px rgba(42, 182, 247, 0.4);
-         transform: scale(1.05);
-  transition: all 0.2s ease-out;
-}
-.detailButton.detailButton:active {
+.detailButton:active {
     transform: scale(0.95);  
 }
 
@@ -1081,36 +964,32 @@ box-shadow: 0 5px 15px rgba(42, 182, 247, 0.4);
 
 .infoWrapper {
     display: block;
-margin-bottom: 0px;
-z-index: auto;
-  
+    margin-bottom: 0px;
+    z-index: auto;
 }
 
-  .mainDetailButtons.focuscontainer-x {
+.mainDetailButtons.focuscontainer-x {
     position: relative;
-z-index: auto;
-margin-top: 0px;
-margin-bottom: 0px;
-  
+    z-index: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
-  .detailPagePrimaryContainer.padded-left.padded-right.detailRibbon {
+.detailPagePrimaryContainer.padded-left.padded-right.detailRibbon {
     position: relative;
-z-index: auto;
-display: block;
-height: auto;
-  
+    z-index: auto;
+    display: block;
+    height: auto;
 }
 
 .cardOverlayContainer {
     background-color: transparent !important;
-   
 }
 
- /* Fix profile picture to be circular */
- .paper-icon-button-light > div {
- display: block !important;
- }
+/* Fix profile picture to be circular */
+.paper-icon-button-light > div {
+    display: block !important;
+}
 
 /* ==========================================================================
    Rename Playlists to Moods
@@ -1153,4 +1032,22 @@ h1:has-text("Playlists") {
 
 .pluginMenuOptions {
   display: none;
+}
+
+
+
+/* ==========================================================================
+   Jellyfin 10.11 Content Shift HotFix
+   ========================================================================== */
+.layout-desktop [dir="ltr"] .detailRibbon,
+.layout-tv [dir="ltr"] .detailRibbon {
+    padding-left: 0 !important;
+}
+
+[dir="ltr"] .detailPagePrimaryContent {
+    padding-left: 0 !important;
+}
+
+#itemDetailPage .detailPagePrimaryContainer .detailSectionContent {
+    padding-left: 0vw !important;
 }
