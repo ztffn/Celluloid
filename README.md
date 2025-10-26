@@ -7,7 +7,7 @@
 
 
 
-***A custom theme for <a href="https://jellyfin.org/">Jellyfin</a> — inspired by light leaks, film grain, and the quiet magic of cinema. Designed for rich visuals, clean typography, and a minimal, immersive viewing experience.***
+***A custom theme for <a href="https://jellyfin.org/">Jellyfin</a> inspired by light leaks, film grain, and the quiet magic of cinema. Designed for rich visuals, clean typography, and a minimal, immersive viewing experience.***
 
 ---
 
