@@ -1,0 +1,1156 @@
+/* ==========================================================================
+   Imports and Font Settings
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+/* ==========================================================================
+   Variables
+   ========================================================================== */
+:root {
+    /* Colors */
+    --white: 243, 242, 243;           /* F3F2F3 */
+    --white-off: 207, 221, 233;       /* CFDDE9 */
+    --jade-green: 0, 172, 111;        /* 00AC6F */
+    --honey-yellow: 255, 194, 85;     /* FFC255 */
+    --cherry-red: 212, 51, 83;        /* D43353 */
+    --deep-blue: 78, 116, 247;        /* 4E74F7 */
+
+    /* Uncomment to enable custom rounding
+    --rounding: 12px;
+    --rounding-alt: 9px;
+    --rounding-large: 24px;
+    --rounding-circle: 100px;
+    */
+}
+
+/* ==========================================================================
+   Global Typography
+   ========================================================================== */
+body, h1, h2, h3, h4 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 120% !important;
+   
+}
+
+.sectionTabs {
+    font-size: 100% !important;
+}
+
+/* ==========================================================================
+   Header Styles
+   ========================================================================== */
+.skinHeader.semiTransparent,
+.skinHeader-withBackground {
+    background-color: transparent;
+}
+/* No Counter on Library Page */
+.libraryPage .paging {
+  
+}
+/* Sort image replace */
+.material-icons.sort_by_alpha::before {
+  content: "\e8d5" !important;
+}
+/* ==========================================================================
+   Backdrop and Background
+   ========================================================================== */
+.backdropContainer {
+    height: 100vh;
+    position: fixed;
+    width: 80vw;
+    left: 20%;
+}
+
+.backdropImage {
+    background-size: cover !important;
+    background-attachment: fixed !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    height: 100% !important;
+    min-height: 100vh !important;
+    position: relative;
+}
+
+/* Main page background */
+body.withSectionTabs .backdropImage {
+     /* background-image: url("https://cdn.jsdelivr.net/gh/ztffn/Jellyfin-Celluloid-Theme/Theme/assets/img/celluloid-marquee.webp") !important; */
+  background-image: url("https://raw.githubusercontent.com/ztffn/Jellyfin-Celluloid-Theme/main/Theme/assets/img/celluloid-marquee.webp") !important;
+
+}
+
+/* Detail page background */
+.backgroundContainer.withBackdrop {
+    background-color: rgba(20, 20, 20, 0.2) !important;
+    background-image:
+        linear-gradient(to left, transparent 20%, rgba(20, 20, 20, 1) 80%, rgb(20, 20, 20) 90%),
+        linear-gradient(to bottom, transparent 40%, rgba(20, 20, 20, 0.1) 70%, rgb(20, 20, 20) 90%) !important;
+}
+
+/* Detail page loading state */
+.itemDetailPage .backdropImage.loading {
+    filter: blur(10px) saturate(100%) contrast(100%) brightness(100%) !important;
+}
+
+/* ==========================================================================
+   Detail Page Layout
+   ========================================================================== */
+#itemDetailPage {
+    .detailPagePrimaryContainer,
+    .detailLogo,
+    .detailPagePrimaryContainer .detailSectionContent {
+        padding-left: 3.5vw !important;
+    }
+
+    .detailSectionContent {
+        padding-right: 35vw !important;
+    }
+}
+
+/* Logo positioning */
+.detailLogo {
+    height: 16vh;
+    width: 34em;
+    background-position: top left;
+}
+
+/*Alternate itempage*/
+.itemBackdrop {
+    height: 31vh !important;
+    display: inherit;
+}
+.detailLogo {
+    display: none;
+}
+.detailRibbon {
+    margin-top: 0;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    background: none;
+}
+.detailImageContainer .card {
+    top: 18vh;
+}
+#itemDetailPage .detailLogo {
+    position: static;
+    display: block;
+    -webkit-filter: drop-shadow(0 0 10px rgba(2, 2, 2, 0.75));
+    /*! filter: drop-shadow(0 0 10px rgba(2, 2, 2, 0.75)); */
+    flex-shrink: 0;
+    background-position: 0 50%;
+    margin-top: -1vh!important;
+    margin-bottom: 2vh;
+    margin-left: 3vh !important;
+    height: 30%;
+    max-width: 70vw!important;
+}
+#itemDetailPage .itemName.infoText.parentNameLast {
+    display: none;
+}
+.hide+.detailPageWrapperContainer .itemName {
+    display: block !important;
+}
+.itemName {
+    margin: .5em 0 !important;
+}
+.layout-mobile #itemDetailPage .itemName.infoText.parentNameLast {
+    display: block;
+}
+/* Title visibility */
+#itemDetailPage .itemName.infoText.parentNameLast > bdi:first-child,
+#itemDetailPage .parentName > bdi:first-child {
+    opacity: 0;
+}
+.hide + .detailPageWrapperContainer .itemName > bdi:first-child,
+.hide + .parentName > bdi:first-child {
+    opacity: 1 !important;
+}
+/* Detail section layout */
+.detailSection {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    box-orient: vertical;
+}
+.detailSection .detailSectionContent {
+    -webkit-box-ordinal-group: 1;
+    -moz-box-ordinal-group: 1;
+    box-ordinal-group: 1;
+}
+.detailSection .recordingFields,
+.detailSection .trackSelections {
+    -webkit-box-ordinal-group: 2;
+    -moz-box-ordinal-group: 2;
+    box-ordinal-group: 2;
+    display: none;
+}
+.detailSection .itemDetailsGroup {
+    -webkit-box-ordinal-group: 4;
+    -moz-box-ordinal-group: 4;
+    box-ordinal-group: 4;
+}
+/* Description and content styling */
+.detailPagePrimaryContainer {
+    font-size: 115% !important;
+}
+.detailSectionContent {
+    margin-top: -2vw !important;
+    padding: 0vw 0vw 0.5vw 0vw !important;
+}
+.detailSectionContent .tagline {
+    font-weight: bold;
+    font-size: 150% !important;
+    margin-bottom: 0.3vh;
+}
+#itemDetailPage .tagline {
+    border-left: 0.25em solid rgb(var(--white));
+    padding: 0 0.5em;
+}
+.detailSectionContent .detail-clamp-text,
+.detailSectionContent .overview {
+    font-weight: normal;
+    font-size: 130% !important;
+    margin-top: 0.4em;
+}
+.detail-clamp-text {
+    -webkit-line-clamp: 5 !important;
+}
+a.overview-expand.emby-button {
+    font-size: 110%;
+}
+/* Box art */
+.detailImageContainer .card {
+    left: auto !important;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 25vw;
+}
+.detailImageContainer .card {
+    display:none;
+    max-height: 80vh;
+    max-width: 15vw;
+    position: absolute !important;
+    top: 85%  !important;
+    z-index: 3;
+}
+.detailImageContainer.padded-left .card.portraitCard {
+    margin-left: auto; /* Pushes it to the right */
+}
+#itemDetailPage .detailPagePrimaryContainer{
+    padding-left: 3.5vw!important   ;
+}
+#itemDetailPage .detailLogo{
+    padding-left: 3.5vw!important;
+}
+#itemDetailPage .detailPagePrimaryContainer .detailSectionContent{
+    padding-left: 3.5vw!important;
+}
+.detailPageContent{
+    padding-left: 3.5vw!important;
+}
+#itemDetailPage .detailSectionContent{
+    padding-right: 35vw !important;
+}
+/* ==========================================================================
+   Card and Hover Effects
+   ========================================================================== */
+
+/* Card hover animations with backlight effect */
+.cardBox {
+    position: relative;
+}
+
+/* Create the backlight effect */
+.cardBox::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    /* Adjust bottom to only cover image area */
+    bottom: 15%;
+    z-index: -1;
+    border-radius: inherit;
+    transform: scale(0.95);
+    filter: blur(15px);
+    background: linear-gradient(270deg, #568495, #6b35a9);
+    background-size: 200% 200%;
+    opacity: 0;
+    transition: all 0.3s ease;
+    animation: animateGlow 10s ease infinite;
+    pointer-events: none;
+    mix-blend-mode: screen;
+}
+
+/* Show the glow on hover and focus */
+.card:hover .cardBox::before,
+.card.show-focus:focus .cardBox::before {
+    opacity: 0.7;
+    transform: scale(0.98);
+}
+
+/* Scale the card on hover and focus */
+.card:hover .cardBox,
+.card.show-focus:focus .cardBox {
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+.cardScalable .cardImageContainer {
+    contain: strict;
+    height: 100% !important;
+    width: 100% !important;
+}
+@keyframes animateGlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Hide specific card text elements */
+.card[data-collectiontype="boxsets"] .cardText.cardTextCentered.cardText-first,
+.card[data-collectiontype="movies"] .cardText.cardTextCentered.cardText-first,
+.card[data-collectiontype="tvshows"] .cardText.cardTextCentered.cardText-first, .card[data-collectiontype="playlists"] .cardText.cardTextCentered.cardText-first  {
+    display: none;
+}
+
+/* ==========================================================================
+   TV Layout Specific
+   ========================================================================== */
+.layout-tv {
+    font-size: 110% !important;
+}
+/*
+.layout-tv .card:focus .cardBox.visualCardBox,
+.layout-tv .card:focus .cardBox:not(.visualCardBox) .cardScalable {
+    border-color: rgba(var(--accent),.75) !important;
+    border-radius: 20px !important;
+    background-color: rgba(var(--accent),0.75);
+    box-shadow: 2px 3px 16px rgba(var(--accent),0.45);
+    backdrop-filter: blur(5px);
+}
+/* Cast thumbnails */
+.layout-tv #castContent .card.overflowPortraitCard {
+    font-size: 80% !important;
+}
+#castContent .card.overflowPortraitCard.personCard.card-hoverable.card-withuserdata,
+#castContent .card.overflowPortraitCard.personCard.card-withuserdata {
+    width: 4.2cm !important;
+    font-size: 90% !important;
+    max-height: 50% !important;
+}
+/* TV Title Page */
+.layout-tv #itemDetailPage:not(.noBackdrop) .detailPagePrimaryContainer {
+    width: 95vw !important;
+}
+/* ==========================================================================
+   Utility Classes and Hidden Elements
+   ========================================================================== */
+.btnShuffle,
+.btnReplay,
+.itemExternalLinks,
+.itemTags {
+    display: none;
+}
+.starIcon {
+    color: rgba(var(--honey-yellow), 0.8);
+}
+/* Make watched icon dark and transparent */
+.indicator { background: #00000058 !important; }
+/* Make count indicator icon dark and transparent */
+.countIndicator {background: #00000058;}
+.headerHomeButton {
+    display: none;
+}
+.headerButton.headerButtonRight.headerUserButton.paper-icon-button-light {
+    display: none;
+}
+
+/* Fade Horizontal Scrollers */
+.emby-scroller {
+    padding-right: max(env(safe-area-inset-right),3.3%);
+    mask-image: linear-gradient( 90deg, transparent, #000 5%, #000 85%, transparent 100% );
+}
+.dialog .nowPlayingContextMenu, html {
+    background-color: #1010100f;
+    backdrop-filter: blur(10px);
+}
+
+.headerButton.headerButtonRight.headerUserButton.paper-icon-button-light {
+    display:inline-block!important;
+}
+.headerButton.headerButtonRight.headerUserButton.paper-icon-button-light {
+    display:inline-block!important;
+}
+
+/*Library Page - Align Posters to Center */
+.padded-right-withalphapicker {padding-right:2.5% !important;}
+/*Library Page - remove vertical alpha Picker*/
+div.alphaPickerRow-vertical {display: none !important;}
+/*Library (Folders) - Remove Shuffle and play all buttons*/
+.btnShuffle.button-flat {display: none;}
+/*Item Page - resize Subtitle bar*/
+.trackSelections {max-width: 22em;}
+/* Shrink and square (or round) cast thumnails */
+#castContent .card.overflowPortraitCard.personCard.card-hoverable.card-withuserdata {width: 3.5cm !important; font-size: 70% !important;}
+#castContent .card.overflowPortraitCard.personCard.card-withuserdata {width: 3.5cm !important; font-size: 70% !important;}
+
+/* ==========================================================================
+   Vertical Menu
+   ========================================================================== */
+/* Override hide class for main drawer except during video playback */
+body:not(.hide-scroll) .mainDrawer.hide {
+    display: block !important;
+}
+
+/* Ensure menu is always accessible except during video playback */
+body:not(.hide-scroll) .mainDrawer {
+    position: fixed !important;
+    left: 0 !important;
+    width: 60px !important;
+    height: 100vh !important;
+    background-color: rgba(16, 16, 16, 0) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    z-index: 998 !important;
+    transition: width 0.3s ease-out, background-color 0.3s ease-out !important;
+    pointer-events: auto !important;
+}
+
+/* Make menu items consistently focusable across all pages except video */
+body:not(.hide-scroll) .mainDrawer .navMenuOption,
+body:not(.hide-scroll) .mainDrawer .lnkMediaFolder {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    position: relative !important;
+    z-index: 999 !important;
+}
+
+/* Ensure menu items are always clickable/focusable except during video */
+body:not(.hide-scroll) .mainDrawer-scrollContainer {
+    pointer-events: auto !important;
+    z-index: 999 !important;
+    margin-top: 95px !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Force menu to be accessible on home page but not during video */
+body:not(.hide-scroll).homePage .mainDrawer,
+body:not(.hide-scroll).homePage .mainDrawer .navMenuOption,
+body:not(.hide-scroll).homePage .mainDrawer-scrollContainer {
+    pointer-events: auto !important;
+    z-index: 999 !important;
+}
+#dialogToc .toc li a:hover {
+    color: #00a4dc;
+}
+/* Ensure consistent icon highlighting across all sections */
+.navMenuOption-selected,
+.lnkMediaFolder.navMenuOption-selected,
+.libraryPage:not(.allLibraryPage) .lnkMediaFolder[data-collectiontype="boxsets"],
+.libraryPage:not(.allLibraryPage) .navMenuOption[href*="collectionType=boxsets"] {
+    background-color: rgba(0, 164, 220, 0.2) !important;
+    border-left: 3px solid #00a4dc !important;
+}
+/* Keep icons white in all states */
+.navMenuOption i,
+.navMenuOption .material-icons,
+.navMenuOption .navMenuOptionIcon,
+.lnkMediaFolder i,
+.lnkMediaFolder .material-icons,
+.lnkMediaFolder .navMenuOptionIcon {
+    color: #fff !important;
+}
+/* Menu expansion states */
+.mainDrawer.focused,
+.mainDrawer:hover,
+.mainDrawer:focus-within {
+    width: 240px !important;
+    background-color: rgba(16, 16, 16, 0.25) !important;
+}
+/* Menu text visibility */
+.navMenuOptionText {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+}
+.mainDrawer.focused .navMenuOptionText,
+.mainDrawer:hover .navMenuOptionText,
+.mainDrawer:focus-within .navMenuOptionText {
+    display: inline-block;
+    opacity: 1;
+    transition: opacity 0.2s ease-in;
+}
+/* Menu items base styles */
+[dir="ltr"] .navMenuOption {
+    padding: 0.9em 0 0.9em .9em !important;
+    transition: background-color 0.2s ease-out;
+    border-left: 3px solid transparent;
+    cursor: pointer;
+    border-top-right-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+    margin: 0.1em 0 !important;
+    height: 3em !important;
+    box-sizing: border-box !important;
+}
+/* Menu item states */
+.navMenuOption:hover,
+.navMenuOption:focus,
+.navMenuOption.focused,
+.navMenuOption-selected,
+.navMenuOption.navMenuOption-selected,
+.lnkMediaFolder.navMenuOption-selected {
+    background-color: rgba(0, 164, 220, 0.2) !important;
+    border-left: 3px solid #00a4dc !important;
+}
+/* Menu icons */
+.navMenuOption i,
+.navMenuOption .material-icons,
+.navMenuOption .navMenuOptionIcon,
+.lnkMediaFolder i,
+.lnkMediaFolder .material-icons,
+.lnkMediaFolder .navMenuOptionIcon {
+    color: #fff !important;
+}
+/* Menu scrollbar */
+.mainDrawer-scrollContainer {
+    pointer-events: auto !important;
+    z-index: 999 !important;
+    margin-top: 95px !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.mainDrawer-scrollContainer::-webkit-scrollbar {
+    width: 4px;
+}
+.mainDrawer-scrollContainer::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+}
+.mainDrawer-scrollContainer::-webkit-scrollbar-track {
+    background: transparent;
+}
+/* Content Adjustments */
+.libraryPage:not(#editItemMetadataPage) {
+    margin-left: 70px !important;
+    transition: margin-left 0.3s ease-out;
+}
+/* Move library page content up */
+.libraryPage:not(.noSecondaryNavPage) {
+    padding-top: 2.5em !important;
+}
+.sectionTabs {
+    display: none;
+}
+/* Header Adjustments */
+.pageTitleWithLogo {
+    height: 30px !important;
+    width: 100px !important;
+    margin: 0 1em 0 0.5em !important;
+}
+[dir="ltr"] .pageTitle {
+    margin: 0 1em 0 0.5em !important;
+}
+/* Hide hamburger menu on desktop */
+.mainDrawerButton:not(.dashboardDocument) {
+    display: none;
+}
+/* Smooth transitions */
+.layout-desktop .touch-menu-la.transition {
+    transition: transform 0.24s ease-out, left 0.26s ease-out, -webkit-transform 0.24s ease-out !important;
+}
+/* Scrollbar adjustments for drawer */
+.mainDrawer-scrollContainer::-webkit-scrollbar {
+    width: 4px;
+}
+.mainDrawer-scrollContainer::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+}
+.mainDrawer-scrollContainer::-webkit-scrollbar-track {
+    background: transparent;
+}
+.mainDrawer .navMenuOption.emby-button.show-focus:focus,
+.mainDrawer .navMenuOption.show-focus:focus {
+    transform: none !important;
+    -webkit-transform: none !important;
+    z-index: 999 !important;
+}
+/* Hidden elements */
+.sidebarHeader,
+.btnShuffle,
+.btnReplay,
+.itemExternalLinks,
+.itemTags,
+.headerHomeButton,
+div.alphaPickerRow-vertical {
+    display: none;
+}
+
+/* ==========================================================================
+   Vertical Menu
+   ========================================================================== */
+
+/* Show/hide button text based on menu state */
+.btnSelectView::after,
+.btnSort::after,
+.btnFilter::after {
+    content: attr(title);
+    margin-left: 0.5em;
+    opacity: 0;
+    color: rgba(255, 255, 255, 0.7) !important;
+    transition: opacity 0.2s ease-out;
+    white-space: nowrap;
+}
+
+.mainDrawer.focused ~ .libraryPage .btnSelectView::after,
+.mainDrawer.focused ~ .libraryPage .btnSort::after,
+.mainDrawer.focused ~ .libraryPage .btnFilter::after,
+.mainDrawer:hover ~ .libraryPage .btnSelectView::after,
+.mainDrawer:hover ~ .libraryPage .btnSort::after,
+.mainDrawer:hover ~ .libraryPage .btnFilter::after {
+    opacity: 1;
+}
+
+/* ==========================================================================
+   Vertical Menu Admin Dropdown
+   ========================================================================== */
+
+/* Advanced Options Group (Admin & User) */
+.adminMenuOptions {
+    position: relative;
+    margin-top: 3em !important; /* Add space for the toggle button */
+}
+
+/* Create toggle button using pseudo-element */
+.adminMenuOptions::before {
+    content: "\e8b8" !important;
+    font-family: 'Material Icons';
+    position: absolute;
+    left: 0;
+    top: -2em; /* Move up to create space */
+    width: 100%;
+    height: 2em;
+    z-index: 1000;
+    cursor: pointer;
+    display: flex !important;
+    align-items: center;
+    padding: 0.9em 0 0.9em .6em !important;
+    transition: background-color 0.2s ease-out;
+    border-left: 3px solid transparent;
+    border-top-right-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+    margin: 0.1em 0 !important;
+    box-sizing: border-box !important;
+    color: #fff;
+    font-size: 1.5em;
+}
+
+/* Add hover/focus effect to match other menu items */
+.adminMenuOptions:hover::before,
+.adminMenuOptions:focus-within::before,
+.adminMenuOptions.show-focus:focus::before {
+    background-color: rgba(0, 164, 220, 0.2) !important;
+    border-left: 3px solid #00a4dc !important;
+}
+
+/* Hide menu items by default */
+.adminMenuOptions > .navMenuOption,
+.userMenuOptions > .navMenuOption,
+.userMenuOptions > .sidebarHeader {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.2s ease-out, max-height 0.2s ease-out;
+}
+
+/* Show both sections when hovering or focusing over admin section */
+.adminMenuOptions:hover > .navMenuOption,
+.adminMenuOptions:focus-within > .navMenuOption,
+.adminMenuOptions.show-focus:focus > .navMenuOption,
+.adminMenuOptions:hover ~ .userMenuOptions > .navMenuOption,
+.adminMenuOptions:focus-within ~ .userMenuOptions > .navMenuOption,
+.adminMenuOptions.show-focus:focus ~ .userMenuOptions > .navMenuOption,
+.adminMenuOptions:hover ~ .userMenuOptions > .sidebarHeader,
+.adminMenuOptions:focus-within ~ .userMenuOptions > .sidebarHeader,
+.adminMenuOptions.show-focus:focus ~ .userMenuOptions > .sidebarHeader,
+/* Show when any admin menu item is selected */
+.adminMenuOptions > .navMenuOption:hover ~ .navMenuOption,
+.adminMenuOptions > .navMenuOption:focus-within ~ .navMenuOption,
+.adminMenuOptions > .navMenuOption.show-focus:focus ~ .navMenuOption,
+/* Show when any user menu item is selected */
+.userMenuOptions > .navMenuOption:hover ~ .navMenuOption,
+.userMenuOptions > .navMenuOption:focus-within ~ .navMenuOption,
+.userMenuOptions > .navMenuOption.show-focus:focus ~ .navMenuOption,
+.userMenuOptions > .navMenuOption:hover ~ .sidebarHeader,
+.userMenuOptions > .navMenuOption:focus-within ~ .sidebarHeader,
+.userMenuOptions > .navMenuOption.show-focus:focus ~ .sidebarHeader {
+    opacity: 1;
+    max-height: 3em;
+}
+
+/* Show both sections when hovering or focusing over user section */
+.mainDrawer-scrollContainer:has(.userMenuOptions:hover) .adminMenuOptions > .navMenuOption,
+.mainDrawer-scrollContainer:has(.userMenuOptions:focus-within) .adminMenuOptions > .navMenuOption,
+.mainDrawer-scrollContainer:has(.userMenuOptions.show-focus:focus) .adminMenuOptions > .navMenuOption,
+.mainDrawer-scrollContainer:has(.userMenuOptions:hover) .userMenuOptions > .navMenuOption,
+.mainDrawer-scrollContainer:has(.userMenuOptions:focus-within) .userMenuOptions > .navMenuOption,
+.mainDrawer-scrollContainer:has(.userMenuOptions.show-focus:focus) .userMenuOptions > .navMenuOption,
+.mainDrawer-scrollContainer:has(.userMenuOptions:hover) .userMenuOptions > .sidebarHeader,
+.mainDrawer-scrollContainer:has(.userMenuOptions:focus-within) .userMenuOptions > .sidebarHeader,
+.mainDrawer-scrollContainer:has(.userMenuOptions.show-focus:focus) .userMenuOptions > .sidebarHeader,
+/* Show when any menu item in either section is selected */
+.mainDrawer-scrollContainer:has(.adminMenuOptions .navMenuOption:hover) .adminMenuOptions > .navMenuOption,
+.mainDrawer-scrollContainer:has(.adminMenuOptions .navMenuOption:focus-within) .adminMenuOptions > .navMenuOption,
+.mainDrawer-scrollContainer:has(.adminMenuOptions .navMenuOption.show-focus:focus) .adminMenuOptions > .navMenuOption,
+.mainDrawer-scrollContainer:has(.userMenuOptions .navMenuOption:hover) .userMenuOptions > .navMenuOption,
+.mainDrawer-scrollContainer:has(.userMenuOptions .navMenuOption:focus-within) .userMenuOptions > .navMenuOption,
+.mainDrawer-scrollContainer:has(.userMenuOptions .navMenuOption.show-focus:focus) .userMenuOptions > .navMenuOption {
+    opacity: 1;
+    max-height: 3em;
+}
+
+/* Keep the toggle button visible */
+.adminMenuOptions::before {
+    opacity: 1 !important;
+}
+
+/* ==========================================================================
+   Filter Controls in Vertical Menu | TODO: could not get it to position below movies but above shows based on what page were on
+   ========================================================================== 
+
+/* Reset margin for movies link 
+.lnkMediaFolder[data-itemid][href*="movies.html"] {
+    margin-bottom: 0 !important;
+}
+
+/* Add margin only when the controls container exists and is visible 
+.pageTabContent:has(.flex.align-items-center.justify-content-center.flex-wrap-wrap) .lnkMediaFolder[data-itemid][href*="movies.html"] {
+    margin-bottom: 11em !important;
+}
+
+/* Position the control container in vertical menu 
+.flex.align-items-center.justify-content-center.flex-wrap-wrap {
+    position: fixed !important;
+    left: 0 !important;
+    top: 300px !important;
+    width: 60px !important;
+    height: auto !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    z-index: 999 !important;
+    transition: width 0.3s ease-out !important;
+}
+
+/* Expand controls with menu 
+.mainDrawer.focused ~ .libraryPage .flex.align-items-center.justify-content-center.flex-wrap-wrap,
+.mainDrawer:hover ~ .libraryPage .flex.align-items-center.justify-content-center.flex-wrap-wrap {
+    width: 240px !important;
+}
+
+/* Style individual controls 
+.btnSelectView,
+.btnSort,
+.btnFilter,
+.btnFilter-wrapper {
+    width: 100% !important;
+    height: 3em !important;
+    margin: 0.1em 0 !important;
+    background: transparent !important;
+    border: none !important;
+    border-left: 3px solid transparent !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    text-align: left !important;
+    cursor: pointer !important;
+    border-top-right-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+}
+
+/* Style the icons 
+.btnSelectView .material-icons,
+.btnSort .material-icons,
+.btnFilter .material-icons {
+    margin-right: 1em !important;
+    font-size: 1.5em !important;
+    vertical-align: middle !important;
+    color: #fff !important;
+    width: 24px !important;
+    text-align: center !important;
+}
+
+/* Hover effects 
+.btnSelectView:hover,
+.btnSort:hover,
+.btnFilter-wrapper:hover {
+    background-color: rgba(0, 164, 220, 0.2) !important;
+    border-left: 3px solid #00a4dc !important;
+}
+
+/* Filter indicator 
+.filterIndicator {
+    position: absolute !important;
+    right: 1em !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    background: #00a4dc !important;
+    color: white !important;
+    border-radius: 50% !important;
+    width: 1.2em !important;
+    height: 1.2em !important;
+    text-align: center !important;
+    line-height: 1.2em !important;
+    font-size: 0.8em !important;
+}
+
+/* Hide paging info and shuffle */
+.listPaging,
+.btnShuffle {
+    display: none !important;
+}
+
+/* Change sort icon */
+.material-icons.sort_by_alpha::before {
+  content: "\e8d5" !important;
+}
+
+/* Show/hide button text based on menu state */
+.btnSelectView::after,
+.btnSort::after,
+.btnFilter::after {
+display: none !important;
+}
+
+/* Move Filter menu up a bit */
+.libraryPage {
+    padding-bottom: 5em !important;
+  margin-top: -3em !important;
+
+}
+/* But then move down the content on main page */
+.homeSectionsContainer {
+    margin-top: 3em !important;
+  }
+
+/* ==========================================================================
+   Backdrop Transitions
+   ========================================================================== */
+
+/* Add main backdrop overlay with gradient and film grain */
+.backdropImage::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(-45deg, #d15631, #b9225c, #0f7195, #118a6e);
+    background-size: 400% 400%;
+    animation: gradient-anim 15s ease infinite;
+    opacity: 0;
+    z-index: 100;
+    transition: opacity 0.8s ease-out;
+}
+
+/* Show  overlay when on main page */
+body.withSectionTabs .backdropImage::before {
+    opacity: 1;
+}
+
+/* Add transition delay to hide the switch */
+body:not(.withSectionTabs) .backdropImage::before {
+    transition: opacity 1.2s ease-out 0.4s;
+}
+
+/* Ensure smooth transition */
+.backdropImageFadeIn {
+    transition: opacity 0.8s ease-out;
+}
+/* Add film grain effect */
+.backdropImage::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='3' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    opacity: .2;
+    z-index: 101;
+    pointer-events: none;
+    transition: opacity 0.8s ease-out;
+}
+
+/* Add transition delay to hide the switch */
+body:not(.withSectionTabs) .backdropImage::before,
+body:not(.withSectionTabs) .backdropImage::after {
+    transition: opacity 2s ease-out 1.5s;
+}
+
+/* Define the gradient animation */
+@keyframes gradient-anim {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+
+/* ==========================================================================
+   Light Leak Effects
+   ========================================================================== */
+
+
+/* First blob */
+.backdropImage::after {
+    content: '';
+    position: fixed !important;
+    height: 350px !important;
+    width: 400px !important;
+    background: rgba(255, 255, 255, 0.8) !important;
+    border-radius: 40% 50% 30% 40% !important;
+    opacity: 0;
+    top: 15% !important;
+    right: 15% !important;
+    z-index: 100 !important;
+    filter: blur(40px) brightness(1.2) !important;
+    -webkit-filter: blur(40px) brightness(1.2) !important;
+    mix-blend-mode: overlay !important;
+    animation: blob_one 18s ease-in-out infinite both alternate !important;
+    transition: opacity 0.8s ease-out !important;
+    pointer-events: none !important;
+    will-change: filter, transform, border-radius !important;
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+    perspective: 1000 !important;
+    -webkit-perspective: 1000 !important;
+}
+
+/* Additional blobs using other elements */
+.libraryPage::before {
+    content: '';
+    position: fixed !important;
+    height: 200px !important;
+    width: 200px !important;
+    background: rgba(255, 255, 255, 0.8) !important;
+    border-radius: 33% 67% 70% 30% / 30% 40% 70% 70% !important;
+    opacity: 0;
+    top: 5% !important;
+    right: 25% !important;
+    z-index: 100 !important;
+    filter: blur(40px) brightness(1.2) !important;
+    -webkit-filter: blur(40px) brightness(1.2) !important;
+    mix-blend-mode: overlay !important;
+    animation: blob_two 15s ease-in-out infinite both alternate !important;
+    transition: opacity 0.8s ease-out !important;
+    pointer-events: none !important;
+    will-change: filter, transform, border-radius !important;
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+    perspective: 1000 !important;
+    -webkit-perspective: 1000 !important;
+}
+
+.libraryPage::after {
+    content: '';
+    position: fixed !important;
+    height: 180px !important;
+    width: 160px !important;
+    background: rgba(255, 255, 255, 0.8) !important;
+    border-radius: 37% 63% 51% 49% / 37% 35% 35% 63% !important;
+    opacity: 0;
+    bottom: 15% !important;
+    right: 20% !important;
+    z-index: 100 !important;
+    filter: blur(40px) brightness(1.2) !important;
+    -webkit-filter: blur(40px) brightness(1.2) !important;
+    mix-blend-mode: overlay !important;
+    animation: blob_three 12s ease-in-out infinite both alternate !important;
+    transition: opacity 0.8s ease-out !important;
+    pointer-events: none !important;
+    will-change: filter, transform, border-radius !important;
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+    perspective: 1000 !important;
+    -webkit-perspective: 1000 !important;
+}
+
+/* Show blobs when on main page */
+body.withSectionTabs .backdropImage::after,
+body.withSectionTabs .mainDrawer::before,
+body.withSectionTabs .mainDrawer::after {
+    opacity: 0.5 !important;
+}
+
+/* Blob animations */
+@keyframes blob_one {
+    0%, 100% { 
+        border-radius: 33% 67% 70% 30% / 30% 40% 70% 70% !important; 
+        transform: translate(0, 0) rotate(0deg) !important;
+    }
+    50% { 
+        border-radius: 37% 63% 51% 49% / 37% 35% 35% 63% !important;
+        transform: translate(-200px, 100px) rotate(180deg) !important;
+    }
+}
+
+@keyframes blob_two {
+    0%, 100% { 
+        border-radius: 36% 64% 64% 36% / 64% 48% 52% 26% !important;
+        transform: translate(0, 0) scale(1) !important;
+    }
+    50% { 
+        border-radius: 40% 60% 42% 58% / 51% 51% 49% 59% !important;
+        transform: translate(-150px, 200px) scale(1.2) !important;
+    }
+}
+
+@keyframes blob_three {
+    0%, 100% { 
+        border-radius: 37% 63% 51% 49% / 30% 30% 70% 73% !important;
+        transform: translate(0, 0) rotate(0deg) !important;
+    }
+    50% { 
+        border-radius: 33% 67% 70% 30% / 30% 40% 70% 70% !important;
+        transform: translate(180px, -150px) rotate(-180deg) !important;
+    }
+}
+
+/* ==========================================================================
+   Button Styles
+   ========================================================================== */
+
+
+   .emby-button.show-focus:focus{
+    background: linear-gradient(-45deg, #0f7195, #118a6e);
+  text-shadow: 0 0 30px #fff;
+}
+.emby-button.show-focus:focus{
+    background: linear-gradient(-45deg, #0f7195, #118a6e);
+  text-shadow: 0 0 30px #fff;
+  color: rgba(255, 255, 255, 1);
+box-shadow: 0 5px 15px rgba(42, 182, 247, 0.4);
+         transform: scale(1.05);
+  transition: all 0.2s ease-out;
+}
+.detailButton:active {
+    transform: scale(0.95);  
+}
+
+
+.detailButton.emby-button.show-focus:hover{
+    background: linear-gradient(-45deg, #0f7195, #118a6e);
+  text-shadow: 0 0 30px #fff;
+}
+.detailButton.emby-button.show-focus:hover{
+    background: linear-gradient(-45deg, #0f7195, #118a6e);
+  text-shadow: 0 0 30px #fff;
+  color: rgba(255, 255, 255, 1);
+box-shadow: 0 5px 15px rgba(42, 182, 247, 0.4);
+         transform: scale(1.05);
+  transition: all 0.2s ease-out;
+}
+.detailButton.detailButton:active {
+    transform: scale(0.95);  
+}
+
+/*CHROME  FIX */
+
+.noBackdropTransparency .detailPageSecondaryContainer {
+    background-color: transparent;
+}
+.detailPageSecondaryContainer {
+    background: transparent !important;
+}
+
+.infoWrapper {
+    display: block;
+margin-bottom: 0px;
+z-index: auto;
+  
+}
+
+  .mainDetailButtons.focuscontainer-x {
+    position: relative;
+z-index: auto;
+margin-top: 0px;
+margin-bottom: 0px;
+  
+}
+
+  .detailPagePrimaryContainer.padded-left.padded-right.detailRibbon {
+    position: relative;
+z-index: auto;
+display: block;
+height: auto;
+  
+}
+
+.cardOverlayContainer {
+    background-color: transparent !important;
+   
+}
+
+ /* Fix profile picture to be circular */
+ .paper-icon-button-light > div {
+ display: block !important;
+ }
+
+/* ==========================================================================
+   Rename Playlists to Moods
+   ========================================================================== */
+
+/* Hide original "Playlists" text in sidebar */
+.navMenuOption[href*="playlists"] .navMenuOptionText {
+    font-size: 0 !important;
+}
+
+/* Replace with "Moods" */
+.navMenuOption[href*="playlists"] .navMenuOptionText::after {
+    content: "Moods";
+    font-size: 1rem;
+}
+
+/* Hide "Playlists" text in page titles */
+.pageTitle:has-text("Playlists"),
+h1:has-text("Playlists") {
+    font-size: 0 !important;
+}
+
+/* Replace page title */
+.libraryPage[data-collectiontype="playlists"] .pageTitle::after,
+.libraryPage[data-collectiontype="playlists"] h1::after {
+    content: "Moods";
+    font-size: 1.17em;
+    font-family: 'Quicksand', sans-serif;
+}
+
+/* Rename in library cards if shown */
+.lnkMediaFolder[data-collectiontype="playlists"] .navMenuOptionText {
+    font-size: 0 !important;
+}
+
+.lnkMediaFolder[data-collectiontype="playlists"] .navMenuOptionText::after {
+    content: "Moods";
+    font-size: 1rem;
+}
+
+.pluginMenuOptions {
+  display: none;
+}
