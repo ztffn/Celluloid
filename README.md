@@ -1,10 +1,12 @@
 <!-- Banner placeholder; replace Theme/assets/img/banner.png once available -->
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ztffn/Jellyfin-Celluloid-Theme/main/Theme/assets/img/banner.png" alt="Celluloid Theme banner" width="100%">
+  <img src="https://raw.githubusercontent.com/ztffn/Jellyfin-Celluloid-Theme/main/Previews/celluloidT2.png" alt="Celluloid Theme banner" width="100%">
 </p>
+<h1 align="center"> ⚠️ Work in progress. Not ready for use! ⚠️ </h1>
 
-<h1 align="center">🎬 Celluloid</h1>
-<p align="center">A cinematic custom theme for <a href="https://jellyfin.org/">Jellyfin</a>, crafted for rich visuals, thoughtful typography, and a polished TV-first experience.</p>
+<h1 align="center">Celluloid</h1>
+<p align="center"> A custom theme for <a href="https://jellyfin.org/">Jellyfin</a> — inspired by light leaks, film grain, and the quiet magic of cinema. Designed for rich visuals, clean typography, and a minimal, immersive viewing experience. </p>
+
 
 <p align="center">
   <a href="#-features">Features</a> ·
@@ -15,17 +17,24 @@
 
 ---
 
-## ✨ Features
 
-_Work in progress._ The initial public release will focus on:
+## 🎬 Features
 
-- Elevated "cinema marquee" styling for library and detail views
-- Bold typography with deliberate spacing and glassmorphism accents
-- Responsive layouts that balance 10-foot UI needs with desktop precision
-- Optional overlays (watchlist, play, info) tuned for remote input
+- Animated backgrounds inspired by light leaks and the organic glow of exposed film
 
-> We’re preparing the base CSS now. Follow the repository to get notified when the first tagged release lands.
+- Vertical navigation menu with quick-access links to admin and settings pages
 
+- Beautiful item highlights with a soft backlit glow 
+
+- Minimal typography and simplified web elements. Posters and movie artwork take center stage
+
+- Bold play buttons and clear info cues for interactable elements
+
+
+---
+> I like celluloid, I like film, I like the way that when a movie is projected it sort of breathes a little in the gate. That's the magic of it to me.
+> 
+> <sub>Gary Oldman</sub>
 ---
 
 ## 🧩 Installation
@@ -93,3 +102,5 @@ Please keep new CSS tokens documented so we can maintain predictable customizati
 - [ ] Tag v1.0.0 release & announce
 
 Stay tuned—once the CSS lands we’ll tag a pre-release and broaden testing.
+
+
