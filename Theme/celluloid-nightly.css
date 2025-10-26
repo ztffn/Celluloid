@@ -262,9 +262,7 @@ body.withSectionTabs .backdropImage {
 .hide+.detailPageWrapperContainer .itemName {
     display: block !important;
 }
-.itemName {
-    margin: 0em 0 !important;
-}
+
 .layout-mobile #itemDetailPage .itemName.infoText.parentNameLast {
     display: block;
 }
