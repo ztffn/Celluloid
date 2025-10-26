@@ -83,6 +83,8 @@ Until the packaged release is published, you can preview the theme by referencin
 
 Celluloid Theme comes with two built-in color themes: **Purple** (default) and **Blue**.
 
+> The stylesheet also listens for Jellyfin's own `data-theme="…"` attribute, so in 10.11+ you can trigger a switch by using Jellyfin's native theme toggles.
+
 #### Method 1: URL Parameter
 
 Add `?theme=blue` or `?theme=purple` to your Jellyfin URL:
@@ -101,6 +103,8 @@ html { --theme-selection: blue; }
 /* For Purple Theme */
 html { --theme-selection: purple; }
 ```
+
+This custom property override is used whenever Jellyfin doesn't set a `data-theme` attribute (older versions, or custom embed views).
 
 For more customization options, see the [customization guide](docs/customization.md).
 
