@@ -166,47 +166,243 @@ body, h1, h2, h3, h4 {
 .material-icons.sort_by_alpha::before {
   content: "\e8d5" !important;
 }
+
 /* ==========================================================================
-   Backdrop and Background
+      Backdrop and Background
+      ========================================================================== */
+      .backdropContainer {
+        height: 100vh;
+        position: fixed;
+        width: 80vw;
+        left: 20%;
+    }
+    
+    .backdropImage {
+        background-size: cover !important;
+        background-attachment: fixed !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        height: 100% !important;
+        min-height: 100vh !important;
+        position: relative;
+    }
+    
+    /* Main page background */
+    body.withSectionTabs .backdropImage {
+         /* background-image: url("https://cdn.jsdelivr.net/gh/ztffn/Jellyfin-Celluloid-Theme/Theme/assets/img/celluloid-marquee.webp") !important; */
+      background-image: url("https://raw.githubusercontent.com/ztffn/Jellyfin-Celluloid-Theme/main/Theme/assets/img/celluloid-marquee.webp") !important;
+    
+    }
+    
+    /* Detail page background */
+    .backgroundContainer.withBackdrop {
+        background-color: rgba(20, 20, 20, 0.2) !important;
+        background-image:
+            linear-gradient(to left, transparent 20%, rgba(20, 20, 20, 1) 80%, rgb(20, 20, 20) 90%),
+            linear-gradient(to bottom, transparent 40%, rgba(20, 20, 20, 0.1) 70%, rgb(20, 20, 20) 90%) !important;
+    }
+    
+    /* Detail page loading state */
+    .itemDetailPage .backdropImage.loading {
+        filter: blur(10px) saturate(100%) contrast(100%) brightness(100%) !important;
+    }
+
+    /* ==========================================================================
+      Backdrop Transitions
+      ========================================================================== */
+   
+   /* Add main backdrop overlay with gradient and film grain */
+   .backdropImage::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(-45deg, #d15631, #b9225c, #0f7195, #118a6e);
+    background-size: 400% 400%;
+    animation: gradient-anim 15s ease infinite;
+    opacity: 0;
+    z-index: 100;
+    transition: opacity 0.8s ease-out;
+}
+
+/* Show  overlay when on main page */
+body.withSectionTabs .backdropImage::before {
+    opacity: 1;
+}
+
+/* Add transition delay to hide the switch */
+body:not(.withSectionTabs) .backdropImage::before {
+    transition: opacity 1.2s ease-out 0.4s;
+}
+
+/* Ensure smooth transition */
+.backdropImageFadeIn {
+    transition: opacity 0.8s ease-out;
+}
+/* Add film grain effect */
+.backdropImage::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='3' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    opacity: .2;
+    z-index: 101;
+    pointer-events: none;
+    transition: opacity 0.8s ease-out;
+}
+
+/* Add transition delay to hide the switch */
+body:not(.withSectionTabs) .backdropImage::before,
+body:not(.withSectionTabs) .backdropImage::after {
+    transition: opacity 2s ease-out 1.5s;
+}
+
+/* Define the gradient animation */
+@keyframes gradient-anim {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+
+/* ==========================================================================
+   Light Leak Effects
    ========================================================================== */
-.backdropContainer {
-    height: 100vh;
-    position: fixed;
-    width: 80vw;
-    left: 20%;
-    background-color: var(--darker-gradient-point);
-    background: var(--background-gradient);
+
+
+/* First blob */
+.backdropImage::after {
+    content: '';
+    position: fixed !important;
+    height: 350px !important;
+    width: 400px !important;
+    background: rgba(255, 255, 255, 0.8) !important;
+    border-radius: 40% 50% 30% 40% !important;
+    opacity: 0;
+    top: 15% !important;
+    right: 15% !important;
+    z-index: 100 !important;
+    filter: blur(40px) brightness(1.2) !important;
+    -webkit-filter: blur(40px) brightness(1.2) !important;
+    mix-blend-mode: overlay !important;
+    animation: blob_one 18s ease-in-out infinite both alternate !important;
+    transition: opacity 0.8s ease-out !important;
+    pointer-events: none !important;
+    will-change: filter, transform, border-radius !important;
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+    perspective: 1000 !important;
+    -webkit-perspective: 1000 !important;
 }
 
-.backdropImage {
-    background-size: cover !important;
-    background-attachment: fixed !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    height: 100% !important;
-    min-height: 100vh !important;
-    position: relative;
+/* Additional blobs using other elements */
+.libraryPage::before {
+    content: '';
+    position: fixed !important;
+    height: 200px !important;
+    width: 200px !important;
+    background: rgba(255, 255, 255, 0.8) !important;
+    border-radius: 33% 67% 70% 30% / 30% 40% 70% 70% !important;
+    opacity: 0;
+    top: 5% !important;
+    right: 25% !important;
+    z-index: 100 !important;
+    filter: blur(40px) brightness(1.2) !important;
+    -webkit-filter: blur(40px) brightness(1.2) !important;
+    mix-blend-mode: overlay !important;
+    animation: blob_two 15s ease-in-out infinite both alternate !important;
+    transition: opacity 0.8s ease-out !important;
+    pointer-events: none !important;
+    will-change: filter, transform, border-radius !important;
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+    perspective: 1000 !important;
+    -webkit-perspective: 1000 !important;
 }
 
-/* Main page background */
-body.withSectionTabs .backdropImage {
-     /* background-image: url("https://cdn.jsdelivr.net/gh/ztffn/Jellyfin-Celluloid-Theme/Theme/assets/img/celluloid-marquee.webp") !important; */
-  background-image: url("https://raw.githubusercontent.com/ztffn/Jellyfin-Celluloid-Theme/main/Theme/assets/img/celluloid-marquee.webp") !important;
-
+.libraryPage::after {
+    content: '';
+    position: fixed !important;
+    height: 180px !important;
+    width: 160px !important;
+    background: rgba(255, 255, 255, 0.8) !important;
+    border-radius: 37% 63% 51% 49% / 37% 35% 35% 63% !important;
+    opacity: 0;
+    bottom: 15% !important;
+    right: 20% !important;
+    z-index: 100 !important;
+    filter: blur(40px) brightness(1.2) !important;
+    -webkit-filter: blur(40px) brightness(1.2) !important;
+    mix-blend-mode: overlay !important;
+    animation: blob_three 12s ease-in-out infinite both alternate !important;
+    transition: opacity 0.8s ease-out !important;
+    pointer-events: none !important;
+    will-change: filter, transform, border-radius !important;
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+    perspective: 1000 !important;
+    -webkit-perspective: 1000 !important;
 }
 
-/* Detail page background */
-.backgroundContainer.withBackdrop {
-    background-color: rgba(20, 20, 20, 0.2) !important;
-    background-image:
-        linear-gradient(to left, transparent 20%, rgba(20, 20, 20, 1) 80%, rgb(20, 20, 20) 90%),
-        linear-gradient(to bottom, transparent 40%, rgba(20, 20, 20, 0.1) 70%, rgb(20, 20, 20) 90%) !important;
+/* Show blobs when on main page */
+body.withSectionTabs .backdropImage::after,
+body.withSectionTabs .mainDrawer::before,
+body.withSectionTabs .mainDrawer::after {
+    opacity: 0.5 !important;
 }
 
-/* Detail page loading state */
-.itemDetailPage .backdropImage.loading {
-    filter: blur(10px) saturate(100%) contrast(100%) brightness(100%) !important;
+/* Blob animations */
+@keyframes blob_one {
+    0%, 100% { 
+        border-radius: 33% 67% 70% 30% / 30% 40% 70% 70% !important; 
+        transform: translate(0, 0) rotate(0deg) !important;
+    }
+    50% { 
+        border-radius: 37% 63% 51% 49% / 37% 35% 35% 63% !important;
+        transform: translate(-200px, 100px) rotate(180deg) !important;
+    }
 }
+
+@keyframes blob_two {
+    0%, 100% { 
+        border-radius: 36% 64% 64% 36% / 64% 48% 52% 26% !important;
+        transform: translate(0, 0) scale(1) !important;
+    }
+    50% { 
+        border-radius: 40% 60% 42% 58% / 51% 51% 49% 59% !important;
+        transform: translate(-150px, 200px) scale(1.2) !important;
+    }
+}
+
+@keyframes blob_three {
+    0%, 100% { 
+        border-radius: 37% 63% 51% 49% / 30% 30% 70% 73% !important;
+        transform: translate(0, 0) rotate(0deg) !important;
+    }
+    50% { 
+        border-radius: 33% 67% 70% 30% / 30% 40% 70% 70% !important;
+        transform: translate(180px, -150px) rotate(-180deg) !important;
+    }
+}
+    
 
 /* ==========================================================================
    Detail Page Layout
@@ -578,7 +774,7 @@ a.overview-expand.emby-button {
 .actionsheetDivider {
     margin: 0.3rem 0 !important;
     height: 1px !important;
-    background: rgba(255, 255, 255, 0.1) !important;
+    background: transparent !important;
 }
 
 /* Style the close button - fixed dimensions */
@@ -608,7 +804,16 @@ a.overview-expand.emby-button {
     height: 1.5rem !important;
 }
 
-/* Animation removed as it breaks functionality */
+/* Adjust buttons on subtitle search form */
+.subtitleSearchForm .btnSearchSubtitles {
+    margin-bottom: 2.5rem !important;
+  }
+  .subtitleSearchForm .btnOpenUploadMenu {
+    margin-bottom: 2.5rem !important;
+  }
+  .subtitleSearchForm  .button-submit{
+    margin: 0 !important;
+  }
 
 /* Responsive styles for dialogs */
 @media (max-width: 640px) {
@@ -700,7 +905,7 @@ a.overview-expand.emby-button {
 .layout-tv .formDialog .button-reset {
     padding: 0.75rem 1.5rem !important;
     font-size: 1.2em !important;
-    margin: 0.5rem !important;
+   
 }
 
 /* Increase size of form elements for TV navigation */
@@ -1454,202 +1659,6 @@ body:not(.hide-scroll).homePage .mainDrawer-scrollContainer {
 .homeSectionsContainer {
     margin-top: 3em !important;
   }
-
-/* ==========================================================================
-   Backdrop Transitions
-   ========================================================================== */
-
-/* Add main backdrop overlay with gradient and film grain */
-.backdropImage::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(-45deg, var(--gradient-1), var(--gradient-2), var(--dark, #222940), var(--highlight, #6295D9));
-    background-size: 400% 400%;
-    animation: gradient-anim 15s ease infinite;
-    opacity: 0;
-    z-index: 100;
-    transition: opacity 0.8s ease-out;
-}
-
-/* Show overlay when on main page */
-body.withSectionTabs .backdropImage::before {
-    opacity: 1;
-}
-
-/* Add transition delay to hide the switch */
-body:not(.withSectionTabs) .backdropImage::before {
-    transition: opacity 1.2s ease-out 0.4s;
-}
-
-/* Ensure smooth transition */
-.backdropImageFadeIn {
-    transition: opacity 0.8s ease-out;
-}
-
-/* Add film grain effect */
-.backdropImage .filmGrain {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='3' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-    opacity: .2;
-    z-index: 101;
-    pointer-events: none;
-    transition: opacity 0.8s ease-out;
-}
-
-/* Add transition delay to hide the switch */
-body:not(.withSectionTabs) .backdropImage::before,
-body:not(.withSectionTabs) .backdropImage::after {
-    transition: opacity 2s ease-out 1.5s;
-}
-
-/* Define the gradient animation */
-@keyframes gradient-anim {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-
-
-/* ==========================================================================
-   Light Leak Effects
-   ========================================================================== */
-
-/* First blob */
-.lightLeak-blob1 {
-    content: '';
-    position: fixed !important;
-    height: 350px !important;
-    width: 400px !important;
-    background: rgba(255, 255, 255, 0.8) !important;
-    border-radius: 40% 50% 30% 40% !important;
-    opacity: 0;
-    top: 15% !important;
-    right: 15% !important;
-    z-index: 100 !important;
-    filter: blur(40px) brightness(1.2) !important;
-    -webkit-filter: blur(40px) brightness(1.2) !important;
-    mix-blend-mode: overlay !important;
-    animation: blob_one 18s ease-in-out infinite both alternate !important;
-    transition: opacity 0.8s ease-out !important;
-    pointer-events: none !important;
-    will-change: filter, transform, border-radius !important;
-    transform: translateZ(0) !important;
-    -webkit-transform: translateZ(0) !important;
-    backface-visibility: hidden !important;
-    -webkit-backface-visibility: hidden !important;
-    perspective: 1000 !important;
-    -webkit-perspective: 1000 !important;
-}
-
-/* Additional blobs using other elements */
-.lightLeak-blob2 {
-    content: '';
-    position: fixed !important;
-    height: 200px !important;
-    width: 200px !important;
-    background: rgba(255, 255, 255, 0.8) !important;
-    border-radius: 33% 67% 70% 30% / 30% 40% 70% 70% !important;
-    opacity: 0;
-    top: 5% !important;
-    right: 25% !important;
-    z-index: 100 !important;
-    filter: blur(40px) brightness(1.2) !important;
-    -webkit-filter: blur(40px) brightness(1.2) !important;
-    mix-blend-mode: overlay !important;
-    animation: blob_two 15s ease-in-out infinite both alternate !important;
-    transition: opacity 0.8s ease-out !important;
-    pointer-events: none !important;
-    will-change: filter, transform, border-radius !important;
-    transform: translateZ(0) !important;
-    -webkit-transform: translateZ(0) !important;
-    backface-visibility: hidden !important;
-    -webkit-backface-visibility: hidden !important;
-    perspective: 1000 !important;
-    -webkit-perspective: 1000 !important;
-}
-
-.lightLeak-blob3 {
-    content: '';
-    position: fixed !important;
-    height: 180px !important;
-    width: 160px !important;
-    background: rgba(255, 255, 255, 0.8) !important;
-    border-radius: 37% 63% 51% 49% / 37% 35% 35% 63% !important;
-    opacity: 0;
-    bottom: 15% !important;
-    right: 20% !important;
-    z-index: 100 !important;
-    filter: blur(40px) brightness(1.2) !important;
-    -webkit-filter: blur(40px) brightness(1.2) !important;
-    mix-blend-mode: overlay !important;
-    animation: blob_three 12s ease-in-out infinite both alternate !important;
-    transition: opacity 0.8s ease-out !important;
-    pointer-events: none !important;
-    will-change: filter, transform, border-radius !important;
-    transform: translateZ(0) !important;
-    -webkit-transform: translateZ(0) !important;
-    backface-visibility: hidden !important;
-    -webkit-backface-visibility: hidden !important;
-    perspective: 1000 !important;
-    -webkit-perspective: 1000 !important;
-}
-
-/* Show blobs when on main page */
-body.withSectionTabs .lightLeak-blob1,
-body.withSectionTabs .lightLeak-blob2,
-body.withSectionTabs .lightLeak-blob3 {
-    opacity: 0.5 !important;
-}
-
-/* Blob animations */
-@keyframes blob_one {
-    0%, 100% { 
-        border-radius: 33% 67% 70% 30% / 30% 40% 70% 70% !important; 
-        transform: translate(0, 0) rotate(0deg) !important;
-    }
-    50% { 
-        border-radius: 37% 63% 51% 49% / 37% 35% 35% 63% !important;
-        transform: translate(-200px, 100px) rotate(180deg) !important;
-    }
-}
-
-@keyframes blob_two {
-    0%, 100% { 
-        border-radius: 36% 64% 64% 36% / 64% 48% 52% 26% !important;
-        transform: translate(0, 0) scale(1) !important;
-    }
-    50% { 
-        border-radius: 40% 60% 42% 58% / 51% 51% 49% 59% !important;
-        transform: translate(-150px, 200px) scale(1.2) !important;
-    }
-}
-
-@keyframes blob_three {
-    0%, 100% { 
-        border-radius: 37% 63% 51% 49% / 30% 30% 70% 73% !important;
-        transform: translate(0, 0) rotate(0deg) !important;
-    }
-    50% { 
-        border-radius: 33% 67% 70% 30% / 30% 40% 70% 70% !important;
-        transform: translate(180px, -150px) rotate(-180deg) !important;
-    }
-}
 
 /* ==========================================================================
    Button Styles
