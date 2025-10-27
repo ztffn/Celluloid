@@ -1,7 +1,7 @@
 # Celluloid Dreams
 <h1 align="center"> 🎥 Celluloid Theme for Jellyfin </h1>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ztffn/Jellyfin-Celluloid-Theme/main/Previews/celluloidD2.png" alt="Celluloid Theme banner" width="100%">
+  <img src="https://raw.githubusercontent.com/ztffn/Jellyfin-Celluloid-Theme/main/Previews/celluloidD3.png" alt="Celluloid Theme banner" width="100%">
 </p>
 
 
@@ -13,8 +13,8 @@
 ## 📣 Roadmap / Status
 
 - [x] Repository scaffolding & docs
-- [x] Clean up initial Celluloid CSS
-- [x] Patch for Jellyfin 10.11
+- [ ] Clean up initial Celluloid CSS
+- [ ] Patch for Jellyfin 10.11
 - [ ] Cross browser compatibility
 - [ ] Publish preview gallery
 - [ ] Tag v0.9.0 release & announce
@@ -41,8 +41,7 @@
 
 ## 🎥 Preview
 
-https://github.com/user-attachments/assets/bc94e7ad-bd9b-499a-aa51-97ae47d579a0
-
+[coming]
 ---
 
 ## 🧩 Installation
@@ -81,20 +80,20 @@ Until the packaged release is published, you can preview the theme by referencin
 
 ### Theme Switching
 
-Celluloid Theme comes with two built-in color themes: **Purple** (default) and **Blue**.
+~~Celluloid Theme comes with two built-in color themes: **Purple** (default) and **Blue**.~~ [Not yet working]
 
 > The stylesheet also listens for Jellyfin's own `data-theme="…"` attribute, so in 10.11+ you can trigger a switch by using Jellyfin's native theme toggles.
 
 #### Method 1: URL Parameter
 
-Add `?theme=blue` or `?theme=purple` to your Jellyfin URL:
+~~Add `?theme=blue` or `?theme=purple` to your Jellyfin URL:~~
 ```
 http://your-jellyfin-server:8096/web/index.html?theme=blue
 ```
 
 #### Method 2: Custom CSS
 
-Add one of these lines to your Custom CSS in the Jellyfin Dashboard (after the theme import):
+~~Add one of these lines to your Custom CSS in the Jellyfin Dashboard (after the theme import):~~
 
 ```css
 /* For Blue Theme */
@@ -104,9 +103,10 @@ html { --theme-selection: blue; }
 html { --theme-selection: purple; }
 ```
 
-This custom property override is used whenever Jellyfin doesn't set a `data-theme` attribute (older versions, or custom embed views).
+~~This custom property override is used whenever Jellyfin doesn't set a `data-theme` attribute (older versions, or custom embed views).~~
 
-For more customization options, see the [customization guide](docs/customization.md).
+~~For more customization options, see the [customization guide](docs/customization.md).~~
+
 
 ---
 
@@ -128,11 +128,11 @@ Jellyfin-Celluloid-Theme/
 
 ## 🎨 Customization
 
-Celluloid Theme is designed to be easily customizable. You can modify the theme's appearance by adjusting the CSS variables.
+~~Celluloid is designed to be easily customizable. You can modify the theme's appearance by adjusting the CSS variables.~~
 
 ### Color Scheme
 
-To customize the color scheme, add the following to your Custom CSS after importing the theme:
+~~To customize the color scheme, add the following to your Custom CSS after importing the theme:~~
 
 ```css
 :root {
@@ -151,7 +151,7 @@ To customize the color scheme, add the following to your Custom CSS after import
 
 ### UI Rounding
 
-To enable custom rounding throughout the UI, add:
+~~To enable custom rounding throughout the UI, add:~~
 
 ```css
 :root {
@@ -165,7 +165,7 @@ To enable custom rounding throughout the UI, add:
 
 ### Additional Customizations
 
-For more advanced customizations, check out the `docs/` folder for additional recipes and examples.
+~~For more advanced customizations, check out the `docs/` folder for additional recipes and examples.~~
 
 ## 🛠️ Development
 
@@ -191,9 +191,9 @@ Please keep new CSS tokens documented so we can maintain predictable customizati
 ### Browser Compatibility
 
 Celluloid Theme is tested and optimized for:
-- Chrome/Edge (latest)
+- ~~Chrome/Edge (latest)~~
 - Firefox (latest)
-- Safari (latest)
+- ~~Safari (latest)~~
 
 If you encounter issues on a specific browser, please report them in the GitHub issues.
 
