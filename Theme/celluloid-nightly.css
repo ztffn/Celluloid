@@ -69,9 +69,9 @@ html:not([class*="theme="]) {
    Variables - Customization Options
    ========================================================================== */
 :root {
-    /* Theme Selection - Default is "purple" */
-    /* To change theme, add ?theme=blue to the URL or set in Custom CSS: html { --theme-selection: blue; } */
-    --theme-selection: purple;
+    /* Theme Selection - Default is "blue" */
+    /* To change theme, add ?theme=purple to the URL or set in Custom CSS: html { --theme-selection: purple; } */
+    --theme-selection: blue;
     
     /* Blue Theme Colors */
     --blue-white: 243, 242, 243;           /* F3F2F3 - Used for text and highlights */
@@ -161,10 +161,10 @@ body, h1, h2, h3, h4 {
 .skinHeader-withBackground {
     background-color: transparent;
 }
-
+  
 /* Sort image replace */
 .material-icons.sort_by_alpha::before {
-    content: "\e8d5" !important;
+  content: "\e8d5" !important;
 }
 /* ==========================================================================
    Backdrop and Background
@@ -214,11 +214,11 @@ body.withSectionTabs .backdropImage {
 #itemDetailPage .detailPagePrimaryContainer,
 #itemDetailPage .detailLogo,
 #itemDetailPage .detailPagePrimaryContainer .detailSectionContent {
-    padding-left: 3.5vw !important;
-}
+        padding-left: 3.5vw !important;
+    }
 
 #itemDetailPage .detailSectionContent {
-    padding-right: 35vw !important;
+        padding-right: 35vw !important;
 }
 
 /* Logo positioning */
@@ -475,7 +475,7 @@ a.overview-expand.emby-button {
 }
 
 /* ==========================================================================
-   Action Sheet Styling - Minimal Approach
+   Dialog Styling - Action Sheets and Form Dialogs
    ========================================================================== */
 
 /* Create a backdrop overlay effect with enhanced blur */
@@ -492,7 +492,7 @@ a.overview-expand.emby-button {
 
 /* Make the action sheet less intrusive */
 .dialog.actionSheet {
-    background-color: ##20263E;
+    background-color: #20263E;
     border-radius: 16px !important;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5) !important;
     max-width: 400px !important;
@@ -610,12 +610,57 @@ a.overview-expand.emby-button {
 
 /* Animation removed as it breaks functionality */
 
-/* Responsive styles for action sheet */
+/* Responsive styles for dialogs */
 @media (max-width: 640px) {
+    /* Action sheet mobile styling */
     .dialog.actionSheet {
         width: 95% !important;
         max-width: none !important;
         border-radius: 12px !important;
+    }
+    
+    /* Form dialog mobile styling - match action sheet */
+    .formDialog {
+        width: 95% !important;
+        max-width: none !important;
+        border-radius: 12px !important;
+        top: 5vh !important;
+        bottom: 5vh !important;
+        max-height: 90vh !important;
+        overflow: auto !important;
+    }
+    
+    .formDialogHeader {
+        border-radius: 12px 12px 0 0 !important;
+        padding: 0.5rem !important;
+    }
+    
+    .formDialogContent {
+        padding: 0.5rem !important;
+        max-height: 70vh !important;
+    }
+    
+    /* Mobile checkbox styling */
+    .formDialog .emby-checkbox-label {
+        margin-bottom: 0.75rem !important;
+        padding: 0.25rem !important;
+    }
+    
+    .formDialog .checkboxList {
+        padding: 0.25rem !important;
+    }
+    
+    .formDialogFooter {
+        border-radius: 0 0 12px 12px !important;
+        padding: 0.5rem !important;
+        flex-direction: row !important; /* Keep buttons side by side */
+        flex-wrap: wrap !important;
+    }
+    
+    .formDialogFooter .formDialogFooterItem {
+        flex: 1 1 auto !important;
+        min-width: 100px !important;
+        margin: 0.25rem !important;
     }
 }
 
@@ -628,6 +673,421 @@ a.overview-expand.emby-button {
 .layout-tv .actionSheetMenuItem {
     padding: 0.5rem 0.75rem !important;
     margin-bottom: 0.4rem !important;
+}
+
+/* TV layout adjustments for form dialogs - match action sheet */
+.layout-tv .formDialog {
+    max-width: 500px !important; /* Match action sheet width */
+    border-radius: 8px !important;
+}
+
+.layout-tv .formDialogHeader {
+    border-radius: 8px 8px 0 0 !important;
+    padding: 0.75rem 1rem !important;
+}
+
+.layout-tv .formDialogContent {
+    padding: 0.75rem !important;
+}
+
+.layout-tv .formDialogFooter {
+    border-radius: 0 0 8px 8px !important;
+    padding: 0.75rem 1rem !important;
+}
+
+.layout-tv .formDialog .button-submit,
+.layout-tv .formDialog .button-cancel,
+.layout-tv .formDialog .button-reset {
+    padding: 0.75rem 1.5rem !important;
+    font-size: 1.2em !important;
+    margin: 0.5rem !important;
+}
+
+/* Increase size of form elements for TV navigation */
+.layout-tv .formDialog .emby-input,
+.layout-tv .formDialog .emby-select,
+.layout-tv .formDialog .emby-textarea {
+    font-size: 1.2em !important;
+    margin-bottom: 0.75rem !important;
+}
+
+/* TV layout checkbox styling */
+.layout-tv .formDialog .emby-checkbox-label {
+    margin-bottom: 0.75rem !important;
+    padding: 0.5rem !important;
+}
+
+.layout-tv .formDialog .checkboxLabel {
+    font-size: 1.1em !important;
+    margin-left: 1.75rem !important;
+    margin-top: -1rem !important;
+}
+
+.layout-tv .formDialog .checkboxOutline {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+}
+
+.layout-tv .formDialog .checkboxIcon-checked,
+.layout-tv .formDialog .checkboxIcon-unchecked {
+    font-size: 1.5rem !important;
+}
+
+.layout-tv .formDialog .listItem {
+    padding: 0.5rem 0.75rem !important;
+    margin-bottom: 0.4rem !important;
+}
+
+/* ==========================================================================
+   Form Dialog Styling
+   ========================================================================== */
+
+/* We're not using a separate backdrop for form dialogs to make it feel like the same popup */
+/* The action sheet backdrop will remain visible behind the form dialog */
+
+/* Style the form dialog container to match action sheet */
+.formDialog {
+    background-color: #20263E; /* Exact match with action sheet color */
+    border-radius: 16px !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5) !important;
+    max-width: 600px !important; /* Wider than action sheet for more content */
+    margin: auto !important;
+    height: auto !important;
+    max-height: 90vh !important;
+    top: 5vh !important;
+    bottom: 5vh !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: none !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+/* Style the form dialog header to match action sheet */
+.formDialogHeader {
+    background-color: transparent !important;
+    border-radius: 16px 16px 0 0 !important;
+    padding: 0.5rem 1rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.formDialogHeaderTitle {
+    font-family: 'Quicksand', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 1.1em !important;
+    margin: 0 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Style back button to match action sheet close button */
+.formDialogHeader .btnCancel,
+.formDialogHeader .btnBack {
+    color: rgba(255, 255, 255, 0.7) !important;
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    border-radius: 50% !important;
+    padding: 0.5rem !important;
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: unset !important;
+    max-width: unset !important;
+}
+
+.formDialogHeader .material-icons {
+    font-size: 1.5rem !important;
+    line-height: 1 !important;
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+}
+
+/* Style the form dialog content to match action sheet */
+.formDialogContent {
+    padding: 0.5rem !important;
+    max-height: 70vh !important;
+    overflow-y: auto !important;
+}
+
+/* Style upload button and other icon buttons in forms */
+.formDialog .emby-select-iconbutton,
+.formDialog .btnOpenUploadMenu {
+    background-color: rgba(var(--primary), 0.6) !important;
+    border-radius: 50% !important;
+    margin-left: 0.5rem !important;
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.2s ease-out !important;
+}
+
+.formDialog .emby-select-iconbutton:hover,
+.formDialog .btnOpenUploadMenu:hover {
+    background-color: rgba(var(--primary), 0.8) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
+}
+
+.formDialog .emby-select-iconbutton .material-icons,
+.formDialog .btnOpenUploadMenu .material-icons {
+    font-size: 1.5rem !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.formDialogContent::-webkit-scrollbar {
+    width: 5px !important;
+}
+
+.formDialogContent::-webkit-scrollbar-thumb {
+    background: rgba(var(--primary), 0.5) !important;
+    border-radius: 10px !important;
+}
+
+.formDialogContent::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1) !important;
+    border-radius: 10px !important;
+}
+
+/* Style the form dialog footer to match action sheet */
+.formDialogFooter {
+    background-color: transparent !important;
+    border-radius: 0 0 16px 16px !important;
+    padding: 0.75rem 1rem !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    gap: 0.5rem !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Style form inputs */
+.formDialog .inputContainer,
+.formDialog .selectContainer {
+    margin-bottom: 1rem !important;
+}
+
+.formDialog .inputLabel,
+.formDialog .selectLabel {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.formDialog .emby-input,
+.formDialog .emby-textarea {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.formDialog .emby-input:focus,
+.formDialog .emby-textarea:focus {
+    border-color: rgba(var(--primary), 1) !important;
+}
+
+/* Enhanced select dropdown styling */
+.formDialog .selectContainer {
+    position: relative !important;
+    margin-bottom: 1.5rem !important;
+}
+
+/* Style flex container for select with button */
+.formDialog .flex {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.formDialog .flex .selectContainer {
+    flex-grow: 1 !important;
+    margin-right: 0.5rem !important;
+}
+
+.formDialog .flex-shrink-zero {
+    flex-shrink: 0 !important;
+}
+
+.formDialog .emby-select {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    padding-right: 2.5rem !important; /* Make room for the arrow */
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+}
+
+.formDialog .emby-select:focus {
+    border-color: rgba(var(--primary), 1) !important;
+}
+
+.formDialog .selectArrowContainer {
+    position: absolute !important;
+    right: 0.5rem !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    pointer-events: none !important;
+}
+
+.formDialog .selectArrow {
+    color: rgba(var(--primary), 0.8) !important;
+    font-size: 1.5rem !important;
+}
+
+/* Style checkboxes */
+.formDialog .emby-checkbox-label {
+    margin-bottom: 0.5rem !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.formDialog .checkboxLabel {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-family: 'Quicksand', sans-serif !important;
+    margin-left: 0.5rem !important;
+    font-size: 0.95em !important;
+}
+
+.formDialog .checkboxOutline {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    border-radius: 4px !important;
+}
+
+.formDialog .emby-checkbox:checked + span + .checkboxOutline {
+    border-color: rgba(var(--primary), 0.8) !important;
+    background-color: rgba(var(--primary), 0.2) !important;
+}
+
+.formDialog .checkboxIcon-checked {
+    color: rgba(var(--primary), 1) !important;
+}
+
+.formDialog .checkboxIcon-unchecked {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.formDialog .checkboxList {
+    padding: 0.5rem !important;
+    background-color: rgba(0, 0, 0, 0.1) !important;
+    border-radius: 8px !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Style buttons to match action sheet */
+.formDialog .button-submit {
+    background-color: rgba(var(--primary), 0.6) !important;
+    border-radius: 8px !important;
+    transition: all 0.2s ease-out !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
+}
+
+.formDialog .button-submit:hover,
+.formDialog .button-submit:focus {
+    background-color: rgba(var(--primary), 0.8) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
+}
+
+.formDialog .button-cancel {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    border-radius: 8px !important;
+    transition: all 0.2s ease-out !important;
+}
+
+.formDialog .button-cancel:hover,
+.formDialog .button-cancel:focus {
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    transform: translateY(-2px) !important;
+}
+
+.formDialog .button-reset {
+    background-color: rgba(var(--cherry-red), 0.4) !important;
+    border-radius: 8px !important;
+    transition: all 0.2s ease-out !important;
+}
+
+.formDialog .button-reset:hover,
+.formDialog .button-reset:focus {
+    background-color: rgba(var(--cherry-red), 0.6) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Style section headers and labels */
+.formDialog h2 {
+    font-family: 'Quicksand', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 1.1em !important;
+    color: rgba(var(--primary), 0.9) !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.formDialog .selectLabel,
+.formDialog .inputLabel,
+.formDialog .textareaLabel {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-family: 'Quicksand', sans-serif !important;
+    font-weight: 500 !important;
+}
+
+.formDialog .fieldDescription {
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-size: 0.85em !important;
+    margin-top: 0.25rem !important;
+    font-style: italic !important;
+}
+
+/* Style the paper list items */
+.formDialog .paperList .listItem {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 8px !important;
+    margin-bottom: 0.25rem !important;
+    transition: all 0.2s ease-out !important;
+    padding: 0.5rem !important;
+}
+
+.formDialog .paperList .listItem:hover {
+    background-color: rgba(var(--primary), 0.2) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.formDialog .paperList .listItemBody {
+    margin-left: 0.5rem !important;
+}
+
+.formDialog .paperList .textValue {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-family: 'Quicksand', sans-serif !important;
+}
+
+.formDialog .paperList .listItemIcon {
+    color: rgba(var(--primary), 0.9) !important;
+    background-color: transparent !important;
+}
+
+/* Style buttons in list items */
+.formDialog .paperList .paper-icon-button-light {
+    color: rgba(255, 255, 255, 0.7) !important;
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    border-radius: 50% !important;
+    width: 2rem !important;
+    height: 2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.2s ease-out !important;
+}
+
+.formDialog .paperList .paper-icon-button-light:hover {
+    background-color: rgba(var(--cherry-red), 0.4) !important;
+    transform: translateY(-2px) !important;
+}
+
+.formDialog .paperList .paper-icon-button-light .material-icons {
+    font-size: 1.2rem !important;
 }
 
 .headerButton.headerButtonRight.headerUserButton.paper-icon-button-light {
@@ -987,13 +1447,13 @@ body:not(.hide-scroll).homePage .mainDrawer-scrollContainer {
 /* Move Filter menu up a bit */
 .libraryPage {
     padding-bottom: 5em !important;
-    margin-top: -3em !important;
+  margin-top: -3em !important;
 }
 
 /* But then move down the content on main page */
 .homeSectionsContainer {
     margin-top: 3em !important;
-}
+  }
 
 /* ==========================================================================
    Backdrop Transitions
@@ -1198,11 +1658,11 @@ body.withSectionTabs .lightLeak-blob3 {
 
 .emby-button.show-focus:focus {
     background: linear-gradient(-45deg, var(--gradient-1), var(--gradient-2));
-    text-shadow: 0 0 30px #fff;
-    color: rgba(255, 255, 255, 1);
+  text-shadow: 0 0 30px #fff;
+  color: rgba(255, 255, 255, 1);
     box-shadow: 0 5px 15px rgba(var(--primary), 0.4);
-    transform: scale(1.05);
-    transition: all 0.2s ease-out;
+         transform: scale(1.05);
+  transition: all 0.2s ease-out;
 }
 
 .detailButton:active {
@@ -1211,11 +1671,11 @@ body.withSectionTabs .lightLeak-blob3 {
 
 .detailButton.emby-button.show-focus:hover {
     background: linear-gradient(-45deg, var(--gradient-1), var(--gradient-2));
-    text-shadow: 0 0 30px #fff;
-    color: rgba(255, 255, 255, 1);
+  text-shadow: 0 0 30px #fff;
+  color: rgba(255, 255, 255, 1);
     box-shadow: 0 5px 15px rgba(var(--primary), 0.4);
-    transform: scale(1.05);
-    transition: all 0.2s ease-out;
+         transform: scale(1.05);
+  transition: all 0.2s ease-out;
 }
 
 .detailButton:active {
@@ -1233,32 +1693,32 @@ body.withSectionTabs .lightLeak-blob3 {
 
 .infoWrapper {
     display: block;
-    margin-bottom: 0px;
-    z-index: auto;
+margin-bottom: 0px;
+z-index: auto;
 }
 
-.mainDetailButtons.focuscontainer-x {
+  .mainDetailButtons.focuscontainer-x {
     position: relative;
-    z-index: auto;
-    margin-top: 0px;
-    margin-bottom: 0px;
+z-index: auto;
+margin-top: 0px;
+margin-bottom: 0px;
 }
 
-.detailPagePrimaryContainer.padded-left.padded-right.detailRibbon {
+  .detailPagePrimaryContainer.padded-left.padded-right.detailRibbon {
     position: relative;
-    z-index: auto;
-    display: block;
-    height: auto;
+z-index: auto;
+display: block;
+height: auto;
 }
 
 .cardOverlayContainer {
     background-color: transparent !important;
 }
 
-/* Fix profile picture to be circular */
-.paper-icon-button-light > div {
-    display: block !important;
-}
+ /* Fix profile picture to be circular */
+ .paper-icon-button-light > div {
+ display: block !important;
+ }
 
 /* ==========================================================================
    Rename Playlists to Moods
@@ -1311,15 +1771,15 @@ h1:has-text("Playlists") {
 .layout-desktop [dir="ltr"] .detailRibbon,
 .layout-tv [dir="ltr"] .detailRibbon {
     padding-left: 0 !important;
-}
+  }
 
 [dir="ltr"] .detailPagePrimaryContent {
-    padding-left: 0 !important;
-}
+  padding-left: 0 !important;
+  }
 
-#itemDetailPage .detailPagePrimaryContainer .detailSectionContent {
+  #itemDetailPage .detailPagePrimaryContainer .detailSectionContent {
     padding-left: 0vw !important;
-}
+  }
 
 .gradientbg {
 	background: var(--background-gradient);
