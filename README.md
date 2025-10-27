@@ -1,5 +1,4 @@
 # Celluloid Dreams
-<h1 align="center"> 🎥 Celluloid Theme for Jellyfin </h1>
 <p align="center">
   <img src="https://raw.githubusercontent.com/ztffn/Jellyfin-Celluloid-Theme/main/Previews/celluloidD3.png" alt="Celluloid Theme banner" width="100%">
 </p>
