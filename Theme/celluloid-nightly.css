@@ -687,7 +687,62 @@ a.overview-expand.emby-button {
 .dialogContainer {
     backdrop-filter: blur(3px) brightness(0.9);
     -webkit-backdrop-filter: blur(3px) brightness(0.9); /* For Webkit-based browsers */
-    background-color: rgba(0, 0, 0, 0.2); /* Fallback for browsers without backdrop-filter support */
+    background-color: rgba(32, 38, 62, 0.2); /* Fallback for browsers without backdrop-filter support */
+}
+
+/* Style admin preferences menu to match action sheets */
+.padded-left.padded-right.padded-bottom-page.padded-top .readOnlyContent {
+    background-color: #20263E;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5) !important;
+    max-width: 400px !important;
+    margin: auto !important;
+    height: auto !important;
+    max-height: 90vh !important;
+    padding: 0.5rem !important;
+}
+
+/* Style section titles */
+.padded-left.padded-right.padded-bottom-page.padded-top .sectionTitle {
+    font-family: 'Quicksand', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 1.1em !important;
+    color: rgba(var(--primary), 0.9) !important;
+    margin-top: 1rem !important;
+    margin-bottom: 0.5rem !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding-bottom: 0.5rem !important;
+}
+
+/* Style menu items */
+.padded-left.padded-right.padded-bottom-page.padded-top .listItem {
+    border-radius: 6px !important;
+    margin-bottom: 0.25rem !important;
+    transition: all 0.2s ease-out !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    padding: 0.4em 0.6em !important;
+}
+
+.padded-left.padded-right.padded-bottom-page.padded-top .listItem:hover,
+.padded-left.padded-right.padded-bottom-page.padded-top .listItem:focus {
+    background-color: rgba(var(--primary), 0.2) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Style menu item icons */
+.padded-left.padded-right.padded-bottom-page.padded-top .listItemIcon {
+    color: rgba(var(--primary), 0.9) !important;
+    font-size: 1.2em !important;
+    margin-right: 0.5em !important;
+}
+
+/* Style menu item text */
+.padded-left.padded-right.padded-bottom-page.padded-top .listItemBodyText {
+    font-family: 'Quicksand', sans-serif !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.02em !important;
+    font-size: 0.9em !important;
 }
 /* Make the action sheet less intrusive */
 .dialog.actionSheet {
@@ -1329,53 +1384,9 @@ div.alphaPickerRow-vertical {
     font-size: 70% !important;
 }
 
-/* ==========================================================================
-   Vertical Menu
-   ========================================================================== */
-/* Override hide class for main drawer except during video playback */
-body:not(.hide-scroll) .mainDrawer.hide {
-    display: block !important;
-}
+/* NOT SURE WHERE THIS GOES */
 
-/* Ensure menu is always accessible except during video playback */
-body:not(.hide-scroll) .mainDrawer {
-    position: fixed !important;
-    left: 0 !important;
-    width: 60px !important;
-    height: 100vh !important;
-    background-color: rgba(16, 16, 16, 0) !important;
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
-    z-index: 998 !important;
-    transition: width 0.3s ease-out, background-color 0.3s ease-out !important;
-    pointer-events: auto !important;
-}
 
-/* Make menu items consistently focusable across all pages except video */
-body:not(.hide-scroll) .mainDrawer .navMenuOption,
-body:not(.hide-scroll) .mainDrawer .lnkMediaFolder {
-    pointer-events: auto !important;
-    cursor: pointer !important;
-    position: relative !important;
-    z-index: 999 !important;
-}
-
-/* Ensure menu items are always clickable/focusable except during video */
-body:not(.hide-scroll) .mainDrawer-scrollContainer {
-    pointer-events: auto !important;
-    z-index: 999 !important;
-    margin-top: 95px !important;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
-/* Force menu to be accessible on home page but not during video */
-body:not(.hide-scroll).homePage .mainDrawer,
-body:not(.hide-scroll).homePage .mainDrawer .navMenuOption,
-body:not(.hide-scroll).homePage .mainDrawer-scrollContainer {
-    pointer-events: auto !important;
-    z-index: 999 !important;
-}
 #dialogToc .toc li a:hover {
     color: #00a4dc;
 }
@@ -1519,6 +1530,56 @@ body:not(.hide-scroll).homePage .mainDrawer-scrollContainer {
 .mainDrawer:hover ~ .libraryPage .btnFilter::after {
     opacity: 1;
 }
+/* ==========================================================================
+   Vertical Menu
+   ========================================================================== */
+
+
+/* Override hide class for main drawer except during video playback */
+body:not(.hide-scroll) .mainDrawer.hide {
+    display: block !important;
+}
+
+/* Ensure menu is always accessible except during video playback */
+body:not(.hide-scroll) .mainDrawer {
+    position: fixed !important;
+    left: 0 !important;
+    width: 60px !important;
+    height: 100vh !important;
+    background-color: rgba(16, 16, 16, 0) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    z-index: 998 !important;
+    transition: width 0.3s ease-out, background-color 0.3s ease-out !important;
+    pointer-events: auto !important;
+}
+
+/* Make menu items consistently focusable across all pages except video */
+body:not(.hide-scroll) .mainDrawer .navMenuOption,
+body:not(.hide-scroll) .mainDrawer .lnkMediaFolder {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    position: relative !important;
+    z-index: 999 !important;
+}
+
+/* Ensure menu items are always clickable/focusable except during video */
+body:not(.hide-scroll) .mainDrawer-scrollContainer {
+    pointer-events: auto !important;
+    z-index: 999 !important;
+    margin-top: 95px !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Force menu to be accessible on home page but not during video */
+body:not(.hide-scroll).homePage .mainDrawer,
+body:not(.hide-scroll).homePage .mainDrawer .navMenuOption,
+body:not(.hide-scroll).homePage .mainDrawer-scrollContainer {
+    pointer-events: auto !important;
+    z-index: 999 !important;
+}
+
 
 /* ==========================================================================
    Vertical Menu Admin Dropdown
@@ -1663,6 +1724,19 @@ body:not(.hide-scroll).homePage .mainDrawer-scrollContainer {
     margin-top: 3em !important;
   }
 
+  
+/* Hide main drawer on login page and fix admin page blur */
+#loginPage .mainDrawer,
+#loginPage .mainDrawer.hide {
+    display: none !important;
+}
+
+/* Remove blur effect from admin page drawer */
+.mainDrawer-scrollContainer {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
 /* ==========================================================================
    Button Styles
    ========================================================================== */
@@ -1796,4 +1870,162 @@ h1:has-text("Playlists") {
 .gradientbg {
 	background: var(--background-gradient);
 }
-    
+
+ 
+ /* ==========================================================================
+   Login Page Styling – Celluloid Consistency
+   ========================================================================== */
+
+/* Reuse animated backdrop from main page */
+body[data-page-id="loginPage"],
+body.page[data-page-id="loginPage"],
+body.loginPage {
+  position: relative;
+  overflow: hidden;
+  background: var(--background-gradient) !important;
+  background-size: 400% 400%;
+  animation: gradient-anim 15s ease infinite !important;
+  color: rgba(255,255,255,0.9);
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* Film grain overlay */
+body.loginPage::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='3' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: .15;
+  z-index: 0;
+}
+
+/* Center login box with glass effect */
+#loginPage,
+.page[data-page-id="loginPage"] .page,
+body.loginPage .page {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  background-color: rgba(32,38,62,0.35);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: auto;
+  width: 90%;
+  max-width: 620px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+}
+
+/* Logo / header spacing */
+#loginPage h1,
+#loginPage .pageTitle {
+  color: rgba(255,255,255,0.9);
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding-top: 4rem !important;
+}
+
+
+
+/* Hover / focus glow */
+#loginPage button:hover,
+#loginPage button:focus {
+  box-shadow: 0 0 15px rgba(var(--primary), 0.6);
+  transform: scale(1.05);
+}
+
+
+/* Input fields */
+#loginPage input[type="text"],
+#loginPage input[type="password"] {
+  background-color: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  color: rgba(255,255,255,0.9);
+  padding: 0.6rem 1rem;
+  width: 100%;
+  margin-bottom: 1rem;
+  font-family: 'Quicksand', sans-serif;
+}
+
+#loginPage input:focus {
+  outline: none;
+  border-color: rgba(var(--primary),1);
+}
+
+
+/* Profile buttons */
+#loginPage button {
+    background: linear-gradient(-45deg, var(--gradient-1), var(--gradient-2));
+    border: none;
+    border-radius: 12px;
+    padding: 0.7rem 1rem;
+    color: #fff;
+    font-weight: 600;
+    font-family: 'Quicksand', sans-serif;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    margin: 0.4rem;
+  }
+  
+  /* Hover / focus glow */
+  #loginPage button:hover,
+  #loginPage button:focus {
+    box-shadow: 0 0 15px rgba(var(--primary), 0.6);
+    transform: scale(1.05);
+  }
+  #loginPage button:active {
+    transform: scale(0.95);  
+}
+
+#divUsers {
+    width: 160% !important;
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 0 !important;
+    margin: 0 !important;
+    margin-left: -30% !important;    
+}
+/* round large avatars */
+
+.cardPadder {
+    background-color: transparent !important;
+}
+
+.cardContent {
+    background-color: transparent !important;
+    border-radius: 50% !important;
+}
+
+/* Secondary buttons (cancel / links) */
+#loginPage .button-link,
+#loginPage button[role="link"],
+#loginPage button:nth-of-type(n+3) {
+  background: transparent;
+  color: rgba(255,255,255,0.8);
+  text-decoration: underline;
+  font-weight: 400;
+  box-shadow: none;
+  /*! border-radius: 50% !important; */
+}
+
+/* Keep quick-connect and forgot-password inline */
+#loginPage .button-link:hover {
+  color: rgba(var(--primary),1);
+}
+
+/* Simple fade-in */
+body.loginPage {
+  animation: fadeIn 1s ease-out;
+}
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
