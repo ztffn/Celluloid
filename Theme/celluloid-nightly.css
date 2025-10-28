@@ -12,7 +12,9 @@
 /* Blue theme - add ?theme=blue to URL or set --theme-selection: blue; in CSS */
 html[data-theme="blue"],
 html[data-theme=""][class*="theme=blue"],
-html:not([data-theme])[class*="theme=blue"] {
+html:not([data-theme])[class*="theme=blue"],
+html:where(:root[style*="--theme-selection:blue"]),
+html:where(:root[style*="--theme-selection: blue"]) {
     --primary: var(--blue-deep-blue);
     --light: var(--blue-white-off);
     --deep: var(--blue-jade-green);
@@ -34,7 +36,9 @@ html:not([data-theme])[class*="theme=blue"] {
 html[data-theme="purple"],
 html[data-theme=""][class*="theme=purple"],
 html:not([data-theme])[class*="theme=purple"],
-html:not([class*="theme="]) {
+html:where(:root[style*="--theme-selection:purple"]),
+html:where(:root[style*="--theme-selection: purple"]),
+html:not([class*="theme="]):not(:where(:root[style*="--theme-selection:blue"]):not(:root[style*="--theme-selection: blue"])) {
     --primary: var(--purple-primary);
     --light: var(--purple-light);
     --deep: var(--purple-deep);
@@ -52,13 +56,6 @@ html:not([class*="theme="]) {
     --darker-gradient-point: var(--purple-darker-gradient-point);
 }
 
-/* Theme detection from URL parameter */
-@media screen {
-    html:not([data-theme]) {
-        --theme-detection: var(--theme-selection, purple);
-    }
-}
-
 /* ==========================================================================
    Imports and Font Settings
    ========================================================================== */
@@ -70,8 +67,8 @@ html:not([class*="theme="]) {
    ========================================================================== */
 :root {
     /* Theme Selection - Default is "blue" */
-    /* To change theme, add ?theme=purple to the URL or set in Custom CSS: html { --theme-selection: purple; } */
-    --theme-selection: blue;
+    /* To change theme, add ?theme=purple to the URL or set in Custom CSS: html { --theme-selection: blue; } */
+    /* This variable is used by the theme selectors above */
     
     /* Blue Theme Colors */
     --blue-white: 243, 242, 243;           /* F3F2F3 - Used for text and highlights */
@@ -108,22 +105,23 @@ html:not([class*="theme="]) {
     --purple-background-gradient: linear-gradient(300deg, var(--purple-gradient-point-1) 0%, 26.776%, var(--purple-gradient-point-2) 53.5519%, 76.776%, var(--purple-gradient-point-3) 100%);
     --purple-darker-gradient-point: rgb(32, 38, 62); /* Darkest color for solid backgrounds */
     
-    /* Dynamic theme variables - These change based on theme selection */
-    --primary: var(--purple-primary);
-    --light: var(--purple-light);
-    --deep: var(--purple-deep);
-    --dark: var(--purple-dark);
-    --highlight: var(--purple-highlight);
-    --accent: var(--purple-accent);
-    --gradient-1: var(--purple-gradient-1);
-    --gradient-2: var(--purple-gradient-2);
-    --menu-bg: var(--purple-menu-bg);
-    --menu-border: var(--purple-menu-border);
-    --gradient-point-1: var(--purple-gradient-point-1);
-    --gradient-point-2: var(--purple-gradient-point-2);
-    --gradient-point-3: var(--purple-gradient-point-3);
-    --background-gradient: var(--purple-background-gradient);
-    --darker-gradient-point: var(--purple-darker-gradient-point);
+    /* Dynamic theme variables - These are set by the theme selectors above */
+    /* Default values if no theme is selected - these will be overridden by theme selectors */
+    --primary: var(--blue-deep-blue);
+    --light: var(--blue-white-off);
+    --deep: var(--blue-jade-green);
+    --dark: var(--blue-cherry-red);
+    --highlight: var(--blue-honey-yellow);
+    --accent: var(--blue-accent);
+    --gradient-1: var(--blue-gradient-1);
+    --gradient-2: var(--blue-gradient-2);
+    --menu-bg: var(--blue-menu-bg);
+    --menu-border: var(--blue-menu-border);
+    --gradient-point-1: var(--blue-gradient-point-1);
+    --gradient-point-2: var(--blue-gradient-point-2);
+    --gradient-point-3: var(--blue-gradient-point-3);
+    --background-gradient: var(--blue-background-gradient);
+    --darker-gradient-point: var(--blue-darker-gradient-point);
     
     /* Legacy color variables for backward compatibility */
     --white: var(--blue-white);

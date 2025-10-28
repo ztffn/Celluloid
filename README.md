@@ -79,20 +79,20 @@ Until the packaged release is published, you can preview the theme by referencin
 
 ### Theme Switching
 
-~~Celluloid Theme comes with two built-in color themes: **Purple** (default) and **Blue**.~~ [Not yet working]
+Celluloid Theme comes with two built-in color themes: **Blue** (default) and **Purple**.
 
 > The stylesheet also listens for Jellyfin's own `data-theme="…"` attribute, so in 10.11+ you can trigger a switch by using Jellyfin's native theme toggles.
 
 #### Method 1: URL Parameter
 
-~~Add `?theme=blue` or `?theme=purple` to your Jellyfin URL:~~
+Add `?theme=blue` or `?theme=purple` to your Jellyfin URL:
 ```
 http://your-jellyfin-server:8096/web/index.html?theme=blue
 ```
 
 #### Method 2: Custom CSS
 
-~~Add one of these lines to your Custom CSS in the Jellyfin Dashboard (after the theme import):~~
+Add one of these lines to your Custom CSS in the Jellyfin Dashboard (after the theme import):
 
 ```css
 /* For Blue Theme */
